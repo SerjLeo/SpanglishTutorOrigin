@@ -16,7 +16,7 @@ func NewHandler() *Handler {
 func (h *Handler) InitRouter() http.Handler {
 	mux := chi.NewRouter()
 
-	fileServer := http.FileServer(http.Dir("./front/dist"))
+	fileServer := http.FileServer(http.Dir("./static"))
 	mux.Handle("/*", fileServer)
 
 	return mux

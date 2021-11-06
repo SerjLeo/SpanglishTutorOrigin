@@ -42,7 +42,7 @@ const plugins = () => {
     ]
 
     if (isProd){
-        base.push(new BundleAnalyzerPlugin())
+        // base.push(new BundleAnalyzerPlugin())
         base.push(new ImageminPlugin({
             bail: false, // Ignore errors on corrupted images
             cache: true,
@@ -96,7 +96,8 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 3000,
-        hot: isDev
+        hot: isDev,
+        host: '0.0.0.0'
     },
     module: {
         rules: [
@@ -189,5 +190,5 @@ module.exports = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-    },
+    }
 }
