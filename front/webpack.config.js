@@ -10,7 +10,8 @@ const ImageminPlugin = require("imagemin-webpack");
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
-const isProd = !isDev
+const isProd = process.env.NODE_ENV === 'production'
+const isDeploy = !isDev && !isProd
 
 const plugins = () => {
     base = [
@@ -31,7 +32,7 @@ const plugins = () => {
             filename: '[name].[hash].css'
         }),
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin ({
+        new CopyWebpackPlugin({
             patterns: [
                 {
                     from: path.resolve(__dirname, 'src/favicon.ico'),
@@ -41,24 +42,43 @@ const plugins = () => {
         })
     ]
 
-    if (isProd){
-        // base.push(new BundleAnalyzerPlugin())
+    if (isProd) {
+        base.push(new BundleAnalyzerPlugin())
         base.push(new ImageminPlugin({
             bail: false, // Ignore errors on corrupted images
             cache: true,
             imageminOptions: {
-              // Before using imagemin plugins make sure you have added them in `package.json` (`devDependencies`) and installed them
-              // Lossless optimization with custom option
-              // Feel free to experiment with options for better result for you
-              plugins: [
-                ["mozjpeg", {
-                    progressive: true,
-                    quality: 50
-                }],
-                ["optipng", { optimizationLevel: 5 }],
-              ]
+                // Before using imagemin plugins make sure you have added them in `package.json` (`devDependencies`) and installed them
+                // Lossless optimization with custom option
+                // Feel free to experiment with options for better result for you
+                plugins: [
+                    ["mozjpeg", {
+                        progressive: true,
+                        quality: 50
+                    }],
+                    ["optipng", {optimizationLevel: 5}],
+                ]
             }
-          }))
+        }))
+    }
+
+    if (isDeploy) {
+        base.push(new ImageminPlugin({
+            bail: false, // Ignore errors on corrupted images
+            cache: true,
+            imageminOptions: {
+                // Before using imagemin plugins make sure you have added them in `package.json` (`devDependencies`) and installed them
+                // Lossless optimization with custom option
+                // Feel free to experiment with options for better result for you
+                plugins: [
+                    ["mozjpeg", {
+                        progressive: true,
+                        quality: 50
+                    }],
+                    ["optipng", {optimizationLevel: 5}],
+                ]
+            }
+        }))
     }
 
     return base
@@ -118,23 +138,23 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                  // Creates `style` nodes from JS strings
-                  'style-loader',
-                  {
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {
-                        hmr: isDev,
-                        reloadAll: true
-                    }
-                  },
-                  // Translates CSS into CommonJS
-                  'css-loader',
-                  // Compiles Sass to CSS
-                  'sass-loader',
+                    // Creates `style` nodes from JS strings
+                    'style-loader',
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: isDev,
+                            reloadAll: true
+                        }
+                    },
+                    // Translates CSS into CommonJS
+                    'css-loader',
+                    // Compiles Sass to CSS
+                    'sass-loader',
                 ],
             },
             {
-                test:/\.(png|jpg|svg|jpeg)$/,
+                test: /\.(png|jpg|svg|jpeg)$/,
                 use: [
                     'file-loader',
                     // {
@@ -164,11 +184,11 @@ module.exports = {
                 ]
             },
             {
-                test:/\.(ttf|woff|woff2|eot)$/,
+                test: /\.(ttf|woff|woff2|eot)$/,
                 use: ['file-loader']
             },
             {
-                test:/\.csv$/,
+                test: /\.csv$/,
                 use: ['csv-loader']
             },
             {
