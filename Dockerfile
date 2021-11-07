@@ -5,14 +5,9 @@ ENV NODE_ENV production
 WORKDIR /front
 COPY ./front ./
 
-RUN apk add --no-cache --virtual .gyp \
-            python \
-            make \
-            g++ \
-        && npm install \
-            [ your npm dependencies here ] \
-        && apk del .gyp \
-        && npm run build-deploy
+RUN apk add python3 \
+&& npm install \
+&& npm run build-deploy
 
 FROM golang:1.17.3-alpine3.14 AS back-builder
 
