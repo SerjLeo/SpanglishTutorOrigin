@@ -3,12 +3,9 @@ FROM node:14-alpine3.14 AS front-builder
 ENV NODE_ENV production
 
 WORKDIR /front
-COPY ./front/package.json ./
-
-RUN npm install
-
 COPY ./front ./
-RUN npm run build
+
+RUN npm install && npm run build-prod
 
 FROM golang:1.17.3-alpine3.14 AS back-builder
 

@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "rimraf ../static && cross-env NODE_ENV=development npx webpack --mode development",
     "build": "rimraf ../static && cross-env NODE_ENV=production npx webpack --mode production",
+    "build-prod": "cross-env NODE_ENV=production npx webpack --mode production",
     "server": "cross-env NODE_ENV=development webpack-dev-server"
   },
   "keywords": [
