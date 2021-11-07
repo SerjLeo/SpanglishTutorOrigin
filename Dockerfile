@@ -1,11 +1,18 @@
 FROM node:14-alpine3.14 AS front-builder
-RUN apk add g++ make python
+
 ENV NODE_ENV production
 
 WORKDIR /front
 COPY ./front ./
 
-RUN npm install && npm run build-deploy
+RUN apk add --no-cache --virtual .gyp \
+            python \
+            make \
+            g++ \
+        && npm install \
+            [ your npm dependencies here ] \
+        && apk del .gyp \
+        && npm run build-deploy
 
 FROM golang:1.17.3-alpine3.14 AS back-builder
 
