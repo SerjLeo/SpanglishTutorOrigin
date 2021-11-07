@@ -1,4 +1,4 @@
-FROM node:14-alpine3.14 AS front-builder
+FROM node:14 AS front-builder
 
 ENV NODE_ENV production
 
@@ -8,7 +8,7 @@ COPY ./front ./
 RUN apk update \
 #    && apk --no-cache add --virtual native-deps \
 #    && apk add make python3 \
-  && apk add --no-cache make gcc g++ python3 autoreconf \
+#  && apk add --no-cache make gcc g++ python3 \
 #    && sudo apt-get install build-essential \
     && npm install \
     && npm run build-deploy
