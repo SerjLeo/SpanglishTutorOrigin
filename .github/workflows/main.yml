@@ -26,6 +26,7 @@ jobs:
       - name: Add node
         uses: actions/setup-node@v2
 
+      - run: PYTHON=$pythonLocation
       - run: npm install --global node-gyp
 
       - name: Build container image
