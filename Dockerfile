@@ -5,7 +5,7 @@ ENV NODE_ENV production
 WORKDIR /front
 COPY ./front ./
 
-RUN npm install && npm -g install webpack-cli && npm run build-deploy
+RUN npm install && npm run build-deploy
 
 FROM golang:1.17.3-alpine3.14 AS back-builder
 
