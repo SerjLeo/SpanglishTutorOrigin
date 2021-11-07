@@ -1,5 +1,5 @@
 FROM node:14-alpine3.14 AS front-builder
-
+RUN apk add g++ make python
 ENV NODE_ENV production
 
 WORKDIR /front

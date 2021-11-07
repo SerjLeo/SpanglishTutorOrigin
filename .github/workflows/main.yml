@@ -20,17 +20,17 @@ jobs:
       - name: Checkout master
         uses: actions/checkout@v2
 
-      - name: Install python for plugin
-        uses: actions/setup-python@v2
-
-      - name: Add node
-        uses: actions/setup-node@v2
-
-      - run: PYTHON=$pythonLocation
-      - run: npm install --global node-gyp
+#      - name: Install python for plugin
+#        uses: actions/setup-python@v2
+#
+#      - name: Add node
+#        uses: actions/setup-node@v2
+#
+#      - run: PYTHON=$pythonLocation
+#      - run: npm install --global node-gyp
 
       - name: Build container image
-        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) --build-arg PYTHON=$pythonLocation .
+        run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7).
 
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
