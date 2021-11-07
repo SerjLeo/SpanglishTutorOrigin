@@ -20,9 +20,6 @@ jobs:
       - name: Checkout master
         uses: actions/checkout@v2
 
-      - name: Add node
-        uses: actions/setup-node@v2
-
       - name: Build container image
         run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) .
 
