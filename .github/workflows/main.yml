@@ -20,10 +20,12 @@ jobs:
       - name: Checkout master
         uses: actions/checkout@v2
 
+      - name: Install python for plugin
+        uses: actions/setup-python@v2
+
       - name: Add node
         uses: actions/setup-node@v2
 
-      - run: npm install --global --production windows-build-tools
       - run: npm install --global node-gyp
 
       - name: Build container image
