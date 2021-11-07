@@ -41,25 +41,25 @@ const plugins = () => {
         })
     ]
 
-    if (isProd){
-        // base.push(new BundleAnalyzerPlugin())
-        base.push(new ImageminPlugin({
-            bail: false, // Ignore errors on corrupted images
-            cache: true,
-            imageminOptions: {
-              // Before using imagemin plugins make sure you have added them in `package.json` (`devDependencies`) and installed them
-              // Lossless optimization with custom option
-              // Feel free to experiment with options for better result for you
-              plugins: [
-                ["mozjpeg", {
-                    progressive: true,
-                    quality: 50
-                }],
-                ["optipng", { optimizationLevel: 5 }],
-              ]
-            }
-          }))
-    }
+    // if (isProd){
+    //     // base.push(new BundleAnalyzerPlugin())
+    //     base.push(new ImageminPlugin({
+    //         bail: false, // Ignore errors on corrupted images
+    //         cache: true,
+    //         imageminOptions: {
+    //           // Before using imagemin plugins make sure you have added them in `package.json` (`devDependencies`) and installed them
+    //           // Lossless optimization with custom option
+    //           // Feel free to experiment with options for better result for you
+    //           plugins: [
+    //             ["mozjpeg", {
+    //                 progressive: true,
+    //                 quality: 50
+    //             }],
+    //             ["optipng", { optimizationLevel: 5 }],
+    //           ]
+    //         }
+    //       }))
+    // }
 
     return base
 }
