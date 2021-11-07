@@ -5,12 +5,7 @@ ENV NODE_ENV production
 WORKDIR /front
 COPY ./front ./
 
-RUN apk update \
-#    && apk --no-cache add --virtual native-deps \
-#    && apk add make python3 \
-#  && apk add --no-cache make gcc g++ python3 \
-#    && sudo apt-get install build-essential \
-    && npm install \
+RUN npm install \
     && npm run build-deploy
 
 FROM golang:1.17.3-alpine3.14 AS back-builder
