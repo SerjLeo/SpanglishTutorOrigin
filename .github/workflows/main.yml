@@ -25,10 +25,8 @@ jobs:
 #
 #      - name: Install webpack cli
 #        run: npm -g install webpack-cli
-#      - name: Install python for plugin
-#        uses: actions/setup-python@v2
-#        with:
-#          python-version: '2.7'
+      - name: Install python for plugin
+        uses: actions/setup-python@v2
 
       - name: Build container image
         run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) .
