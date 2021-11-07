@@ -25,7 +25,6 @@ jobs:
 #
 #      - name: Install webpack cli
 #        run: npm -g install webpack-cli
-      -
 #      - name: Install python for plugin
 #        uses: actions/setup-python@v2
 #        with:
