@@ -6,6 +6,7 @@ WORKDIR /front
 COPY ./front ./
 
 RUN apk update \
+    && apk --no-cache add --virtual native-deps \
     && apk add python3 \
 #    && sudo apt-get install build-essential \
     && npm install \
