@@ -1,5 +1,5 @@
 node_modules
 static
-/dist
+dist
 /.idea
 package-lock.json
