@@ -1,26 +1,12 @@
 @import '~normalize.css';
 @import 'fonts.scss';
 @import "splide.min.css";
+@import "base";
 
 $white: rgb(245, 240, 240);
 
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    width: 100%;
-}
-
 .img {
     background-repeat: no-repeat;
-}
-
-body {
-    font-family: 'Playfair', 'Roboto', sans-serif;
 }
 
 .container {
@@ -37,32 +23,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-button:focus {
-    outline: none;
-}
-//SCROLLBAR
-
-*::-webkit-scrollbar {
-    width: 10px;
-    @media screen and (max-width: 1024px) {
-        display: none;
-    }
-}
-
-*::-webkit-scrollbar-track {
-    background-color: rgba(149, 141, 141, 0.2);
-}
-
-*::-webkit-scrollbar-thumb {
-    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-    border-radius: 10px;
-    outline: none;
-}
-
-*::-webkit-scrollbar-button{
-  display: none;
 }
 
 // MODAL
@@ -167,7 +127,7 @@ button:focus {
 }
 
 @keyframes button-flash {
-    80% {
+    60% {
         transform:translateX(-4em) skewX(-45deg);
     }
     100% {
@@ -183,8 +143,7 @@ button:focus {
 .modal-form .form-img {
     width: 100%;
     height: 300px;
-    background: url('../assets/pictures/13258.jpg');
-    background-position: center center;
+    background: url('../assets/pictures/13258.jpg') center center;
     background-size: cover;
 }
 
@@ -418,7 +377,7 @@ button:focus {
     .test-form {
         width: 100%;
     }
-    
+
     .annotation {
         font-size: 14px;
         padding: 20px 10px;
@@ -892,7 +851,7 @@ header {
         height: 50%;
         background-color: rgb(21, 147, 166);
     }
-    
+
     .block-3 .section-text {
         display: flex;
         flex-direction: column;
@@ -1124,7 +1083,7 @@ header {
 }
 
 .card .img-1 {
-    background: url('../assets/pictures/card_1.png');   
+    background: url('../assets/pictures/card_1.png');
 }
 .card .img-2 {
     background: url('../assets/pictures/card_2.jpg');
@@ -1305,13 +1264,13 @@ header {
     .block-7 h2 {
         font-size: 28px;
     }
-    
+
     .block-7 p {
         font-size: 14px;
         margin: 5px;
         letter-spacing: 1px;
     }
-    
+
     .block-7 strong {
         font-size: 16px;
     }
@@ -1320,4 +1279,103 @@ header {
 .lazy {
     background-image: none;
     background-color: #F1F1FA;
+}
+
+.fast-sign-up {
+    z-index: 10000;
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+}
+
+.sign-up-btn {
+    display: flex;
+    position: relative;
+    align-items: center;
+    span {
+        margin-right: 8px;
+    }
+    background: beige;
+    padding: 12px 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2em;
+        height: 100%;
+        background: linear-gradient(-240deg, rgba(#fff,0), rgba(#fff,0.6));
+        transform:translateX(-4em) skewX(-45deg);
+        animation: button-flash 4s infinite;
+    }
+}
+
+.sign-up-close {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    border-radius: 50%;
+    display: flex;
+    background: bisque;
+    z-index: 2;
+}
+
+.contacts__wrap {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    padding: 12px 20px;
+    background: beige;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    width: 130px;
+}
+
+.contacts__items {
+    display: flex;
+    align-items: center;
+    width: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+}
+
+.contacts-main {
+    transition: width 0.3s ease;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contacts__item {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
+    display: block;
+    margin-right: 12px;
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
+
+.contacts__item-inst {
+    background: url('../assets/icons/instagram.png') center/cover;
+}
+
+.contacts__item-profi {
+    background: url('../assets/icons/profi.png') center/cover;
+}
+
+.contacts__wrap:hover {
+    .contacts-main {
+        width: 0;
+    }
+    .contacts__items {
+        width: 100%;
+    }
 }

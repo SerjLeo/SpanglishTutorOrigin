@@ -88,7 +88,7 @@ module.exports = {
         compress: true,
         port: 3000,
         hot: isDev,
-        host: '0.0.0.0'
+        // host: '0.0.0.0'
     },
     module: {
         rules: [

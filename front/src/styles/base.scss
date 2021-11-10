@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  width: 100%;
+}
+
+body {
+  font-family: 'Playfair', 'Roboto', sans-serif;
+}
+
+button {
+  border-style: none;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+button:focus {
+  outline: none;
+}
+//SCROLLBAR
+
+*::-webkit-scrollbar {
+  width: 10px;
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+*::-webkit-scrollbar-track {
+  background-color: rgba(149, 141, 141, 0.2);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  border-radius: 10px;
+  outline: none;
+}
+
+*::-webkit-scrollbar-button{
+  display: none;
+}

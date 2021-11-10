@@ -1,12 +1,4 @@
-import {AlertService, ApiService, FormControlService, ValidatorService} from "./types";
-
-type answerHandler = {
-    (answer: string, id: number): void
-}
-
-type emptyHandler = {
-    (): void
-}
+import {AlertService, AnswerHandler, ApiService, EmptyHandler, FormControlService, ValidatorService} from "./types";
 
 export default class FormControl implements FormControlService {
     private form: any = {}
@@ -21,7 +13,7 @@ export default class FormControl implements FormControlService {
         form.addEventListener('submit', e => this.handleFormSubmit(e, form, title))
     }
 
-    listenToTest(form: HTMLFormElement, title: string, submitHandler: emptyHandler, backBtn: HTMLButtonElement, backHandler: emptyHandler, step: number, answerHandler: answerHandler) {
+    listenToTest(form: HTMLFormElement, title: string, submitHandler: EmptyHandler, backBtn: HTMLButtonElement, backHandler: EmptyHandler, step: number, answerHandler: AnswerHandler) {
         form.addEventListener('submit', (e: Event) => this.handleTestSubmit(e, form, title, submitHandler, step, answerHandler))
         backBtn.addEventListener('click', () => backHandler())
     }
@@ -37,7 +29,7 @@ export default class FormControl implements FormControlService {
         await this.apiService.sendTest(data, title)
     }
 
-    async handleTestSubmit(e: Event, form: HTMLFormElement, title: string, submitHandler: emptyHandler, step: number, answerHandler: answerHandler) {
+    async handleTestSubmit(e: Event, form: HTMLFormElement, title: string, submitHandler: EmptyHandler, step: number, answerHandler: AnswerHandler) {
         e.preventDefault()
         const formData = new FormData(form)
         const data: Record<string, any> = {}
@@ -49,9 +41,9 @@ export default class FormControl implements FormControlService {
         for(let i in this.form[step]) {
             id = Number(this.form[step][i].substr(-1))
         }
-        answerHandler(String(step), id)
+        answerHandler(step, id)
         submitHandler()
-        
+
         if(step === 3 && this.validator.validateForm(form)){
             await this.apiService.sendTest(this.form, title)
         }

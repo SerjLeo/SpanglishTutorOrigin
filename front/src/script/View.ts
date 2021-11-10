@@ -1,70 +1,15 @@
-import Validator from './Validator'
+import {QuestionVariant, ValidatorService, ViewService} from "./types";
+import {questions, variants} from "./entities/questions";
 
-export default class View {
-    
-    constructor(){
-        this.validator = new Validator()
-        this.questions = [
-            'Какой язык Вы хотели бы изучать?',
-            'Каков Ваш уровень владения иностранным языком?',
-            'Ваша возрастная категория?'
-        ]
-        this.variants = [
-            [
-                {
-                    id:0,
-                    text: 'Испанский',
-                    img: 'anws_1_1'
-                },
-                {
-                    id:1,
-                    text: 'Английский',
-                    img: 'anws_1_2'
-                },
-                {
-                    id:2,
-                    text: 'Оба ;)!',
-                    img: 'anws_1_3'
-                },
-            ],
-            [
-                {
-                    id:1,
-                    text: 'Начальный',
-                    img: 'anws_2_1'
-                },
-                {
-                    id:2,
-                    text: 'Средний',
-                    img: 'anws_2_2'
-                },
-                {
-                    id:3,
-                    text: 'Продвинутый',
-                    img: 'anws_2_3'
-                },
-            ],
-            [
-                {
-                    id:1,
-                    text: 'Ребёнок (6-18 лет)',
-                    img: 'anws_3_1'
-                },
-                {
-                    id:2,
-                    text: 'Молодой (18-30 лет)',
-                    img: 'anws_3_2'
-                },
-                {
-                    id:3,
-                    text: 'Взрослый (30-70 лет)',
-                    img: 'anws_3_3'
-                },
-            ]
-        ]
+export default class View implements ViewService {
+    questions: string[] = questions
+    variants: Array<Array<QuestionVariant>> = variants
+
+    constructor(private validator: ValidatorService){
+        this.renderTest = this.renderTest.bind(this)
     }
 
-    renderForm(renderContainer){
+    renderForm(renderContainer: HTMLElement) {
         renderContainer.innerHTML = `
         <div class="modal-form">
             <div class="form-img"></div>
@@ -82,7 +27,8 @@ export default class View {
         </div>`
     }
 
-    renderTest(renderContainer, step, checkedID){
+    renderTest(renderContainer: HTMLElement, step: number, checkedID: number) {
+        console.log(this)
         if (step < 3) {
             renderContainer.innerHTML = `
             <div class="modal-form test-form">
