@@ -23,6 +23,7 @@ WORKDIR /root/
 COPY --from=0 /front/dist ./static
 COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/bin/main .
 COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/config.yml .
+COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/.env .
 
 EXPOSE 80
 
