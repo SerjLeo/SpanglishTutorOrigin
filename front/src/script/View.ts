@@ -18,22 +18,22 @@ export default class View implements ViewService {
                 <p>Если вы знаете языки, вы везде будете как дома.</p>
                 <div class="form-validation-error"></div>
                 <form id="inquirer-form">
-                    <input type="text" name="Имя" placeholder="Имя" maxlength="60">
-                    <input type="text" name="Телефон" placeholder="+7 (999) 999-99-99" maxlength="60">
-                    <input type="text" name="Email" placeholder="E-mail" maxlength="60">
+                    <input type="text" name="name" placeholder="Имя" maxlength="60">
+                    <input type="text" name="phone" placeholder="+7 (999) 999-99-99" maxlength="60">
+                    <input type="text" name="email" placeholder="E-mail" maxlength="60">
                     <div class="select__wrap custom-select">
                         <div class="select-arrow">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg>
                         </div>
                         
                     </div>
-                    <select name="Язык">
+                    <select name="language">
                             <option value="" disabled selected hidden>Выберите язык</option>
                             <option value="eng">Английский</option>
                             <option value="esp">Испанский</option>
                             <option value="both">Оба</option>
                         </select>
-                    <textarea name="Цели" id="" cols="10" rows="5" placeholder="Ваши цели"></textarea>
+                    <textarea name="goals" id="" cols="10" rows="5" placeholder="Ваши цели"></textarea>
                     <button type="submit">Записаться на занятие</button>
                 </form>
             </div>
