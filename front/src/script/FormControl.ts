@@ -3,6 +3,12 @@ import {AlertService, AnswerHandler, ApiService, EmptyHandler, FormControlServic
 export default class FormControl implements FormControlService {
     private form: any = {}
 
+    private languageVocabulary: Record<string, string> = {
+        eng: 'Английский',
+        esp: 'Испанский',
+        both: 'Оба'
+    }
+
     constructor(
       private readonly apiService: ApiService,
       private readonly validator: ValidatorService,
@@ -23,7 +29,7 @@ export default class FormControl implements FormControlService {
         if(!this.validator.validateForm(form)) return
         const formData = new FormData(form)
         const data: Record<string, any> = {}
-        for (const [key, value] of formData.entries()){
+        for (const [key, value] of formData.entries()) {
             data[key] = value
         }
         await this.apiService.sendForm(data, title)
@@ -34,7 +40,8 @@ export default class FormControl implements FormControlService {
         const formData = new FormData(form)
         const data: Record<string, any> = {}
         for (const [key, value] of formData.entries()){
-            data[key] = value
+            if (key === 'language') data[key] = this.languageVocabulary[key]
+            else data[key] = value
         }
         this.form[step] = data
         let id = 0
