@@ -7,7 +7,7 @@ export default class Api implements ApiService {
 
   async sendForm(data: any, title: string): Promise<void> {
     try {
-      await axios.get("");
+      await axios.post("/send-form", { form: data , title });
       this.alertService.invokeAlert("Успех", 'success')
     } catch (error) {
       this.alertService.invokeAlert(error as string, 'error')
