@@ -1,10 +1,17 @@
 http:
-  port: "80"
+  port: "8080"
 env: "local"
 postgres:
   host: "localhost"
-  port: "5432"
-  username: "postgres"
-  dbname: "spgl_tutor"
+  port: "1234"
+  username: "username"
+  dbname: "dbname"
   sslmode: "disable"
+  password: "password"
+smtp:
+  host: "smtp.gmail.com"
+  port: "587"
+  password: "password"
+  from: "from@mail.com"
+  target: "target@mail.com"
 templatesPath: "./templates"
