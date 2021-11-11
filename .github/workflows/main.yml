@@ -20,14 +20,13 @@ jobs:
       - name: Checkout master
         uses: actions/checkout@v2
 
-#      - name: Install python for plugin
-#        uses: actions/setup-python@v2
-#
-#      - name: Add node
-#        uses: actions/setup-node@v2
-#
-#      - run: PYTHON=$pythonLocation
-#      - run: npm install --global node-gyp
+      - name: Create env file
+        run: |
+          touch .env
+          echo SMTP_PASSWORD=${{ secrets.SMTP_PASSWORD }} >> .env
+          echo SMTP_FROM=${{ secrets.SMTP_FROM }} >> .env
+          echo SMTP_TARGET=${{ secrets.SMTP_TARGET }} >> .env
+          cat .env
 
       - name: Build container image
         run: docker build -t $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7) .
