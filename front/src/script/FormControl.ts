@@ -26,7 +26,7 @@ export default class FormControl implements FormControlService {
         for (const [key, value] of formData.entries()){
             data[key] = value
         }
-        await this.apiService.sendTest(data, title)
+        await this.apiService.sendForm(data, title)
     }
 
     async handleTestSubmit(e: Event, form: HTMLFormElement, title: string, submitHandler: EmptyHandler, step: number, answerHandler: AnswerHandler) {

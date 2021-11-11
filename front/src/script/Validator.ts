@@ -10,12 +10,16 @@ export default class Validator implements ValidatorService {
         let emptyFields = ''
         let isLong = false
         let data = new FormData(form)
-        for (let entry of data as any) {
-            if(!entry[1].trim()) {
-                emptyFields += ' ' + entry[0].toLowerCase() + ','
+        if(!Array.from(data.keys()).includes('Язык')) {
+            isEmpty = true;
+            emptyFields += ' язык,'
+        }
+        for (const [key, value] of data.entries() as any) {
+            if (!value.trim()) {
+                emptyFields += ' ' + key.toLowerCase() + ','
                 isEmpty = true
             }
-            if(entry[1].trim().length>60){
+            if (value.trim().length>60){
                 this.alert.validationAlert(`Максимальная длина строки - 60 символов`)
                 isLong = true
             }

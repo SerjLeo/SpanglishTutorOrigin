@@ -3,3 +3,4 @@ static
 dist
 /.idea
 package-lock.json
+config

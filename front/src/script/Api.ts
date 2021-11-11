@@ -5,7 +5,7 @@ export default class Api implements ApiService {
   constructor(private readonly api_url: string, private readonly alertService: AlertService) {
   }
 
-  async sendEmail(data: any): Promise<void> {
+  async sendForm(data: any, title: string): Promise<void> {
     try {
       await axios.get("");
       this.alertService.invokeAlert("Успех", 'success')

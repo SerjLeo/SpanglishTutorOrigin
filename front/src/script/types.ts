@@ -1,5 +1,5 @@
 export interface ApiService {
-  sendEmail(data: any): Promise<void>
+  sendForm(data: any, title: string): Promise<void>
   sendTest(data: any, title: string): Promise<void>
 }
 
