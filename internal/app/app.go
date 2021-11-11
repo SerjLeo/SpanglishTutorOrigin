@@ -8,26 +8,26 @@ import (
 	"github.com/SerjLeo/mlf_backend/pkg/email/smtp"
 	"github.com/SerjLeo/mlf_backend/pkg/templates"
 	"github.com/pkg/errors"
-	"github.com/spf13/viper"
 	"log"
 )
 
 func RunApp() {
-	if err := config.InitConfig(); err != nil {
+	appConfig, err := config.InitConfig(".")
+	if err != nil {
 		log.Fatal(errors.Wrap(err, "Error while reading config").Error())
 	}
-	port := viper.GetString("http.port")
+	port := appConfig.Http.Port
 	mailManager, err := smtp.NewSMTPSender(
-		viper.GetString("smtp.host"),
-		viper.GetString("smtp.password"),
-		viper.GetString("smtp.port"),
-		viper.GetString("smtp.from"),
+		appConfig.SMTP.Host,
+		appConfig.SMTP.Pass,
+		appConfig.SMTP.Port,
+		appConfig.SMTP.From,
 	)
 	if err != nil {
 		log.Fatal(errors.Wrap(err, "Error while creating mail manager").Error())
 	}
 
-	templateManager := templates.NewStandardTemplatesManager(viper.GetString("templatesPath"))
+	templateManager := templates.NewStandardTemplatesManager(appConfig.TemplatesPath)
 	tmpls, err := templateManager.ParseTemplates()
 	if err != nil {
 		log.Fatal(err.Error())
@@ -38,7 +38,7 @@ func RunApp() {
 		MailManager: mailManager,
 		TemplateManager: templateManager,
 		Cache: appCache,
-		TargetEmail: viper.GetString("smtp.target"),
+		TargetEmail: appConfig.SMTP.Target,
 	})
 	server := models.Server{}
 

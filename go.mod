@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/SerjLeo/mlf_backend v0.0.0-20211007074315-7df31857f69d // indirect
 	github.com/go-chi/chi/v5 v5.0.4
+	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/rogpeppe/go-internal v1.8.0 // indirect
