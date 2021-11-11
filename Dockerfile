@@ -24,7 +24,7 @@ COPY --from=0 /front/dist ./static
 COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/bin/main .
 COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/config.yml .
 COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/.env .
-COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/templates .
+COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/templates ./templates
 
 EXPOSE 80
 
