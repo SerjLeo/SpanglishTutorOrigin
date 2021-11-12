@@ -28,15 +28,15 @@ func (h *Handler) sendForm(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	sendFormTemplate, exist := h.Cache.Templates["formEmail"]
+	sendFormTemplate, exist := h.Cache.Templates["formEmail.html"]
 	if !exist {
-		errorResponse(w, http.StatusInternalServerError, "template doesnt exist")
+		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")
 		return
 	}
 
 	bodyString, err := h.TemplateManager.ExecuteTemplateToString(sendFormTemplate, f.Form)
 	if err != nil {
-		errorResponse(w, http.StatusInternalServerError, err.Error())
+		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")
 		return
 	}
 
@@ -46,6 +46,6 @@ func (h *Handler) sendForm(w http.ResponseWriter, r *http.Request) {
 		Subject: f.Title,
 	}
 	if err := h.MailManager.SendEmail(input); err != nil {
-		errorResponse(w, http.StatusInternalServerError, err.Error())
+		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")
 	}
 }
