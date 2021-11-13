@@ -71,5 +71,9 @@ func populateEnv(cfg *AppConfig) error {
 		cfg.Postgres.Password = postgresPass
 	}
 
+	if postgresHost, exists := os.LookupEnv("POSTGRES_HOST"); exists {
+		cfg.Postgres.Host = postgresHost
+	}
+
 	return nil
 }

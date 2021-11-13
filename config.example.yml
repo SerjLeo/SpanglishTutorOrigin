@@ -2,7 +2,6 @@ http:
   port: "8080"
 env: "local"
 postgres:
-  host: "localhost"
   port: "1234"
   username: "username"
   dbname: "dbname"
