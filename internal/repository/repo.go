@@ -6,8 +6,8 @@ import (
 )
 
 type Repository interface {
-	createFeedback(*models.Feedback) (*models.Feedback, error)
-	getFeedbackList() []models.Feedback
+	CreateFeedback(*models.Feedback) (*models.Feedback, error)
+	GetFeedbackList() []models.Feedback
 }
 
 func NewPostgresRepository(db *sqlx.DB) Repository {

@@ -12,11 +12,11 @@ type PostgresDB struct {
 	db *sqlx.DB
 }
 
-func (r *PostgresDB) createFeedback(*models.Feedback) (*models.Feedback, error) {
+func (r *PostgresDB) CreateFeedback(*models.Feedback) (*models.Feedback, error) {
 	return nil, nil
 }
 
-func (r *PostgresDB) getFeedbackList() []models.Feedback {
+func (r *PostgresDB) GetFeedbackList() []models.Feedback {
 	return nil
 }
 
