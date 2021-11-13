@@ -4,6 +4,7 @@ import (
 	"github.com/SerjLeo/SpanglishTutorOrigin/internal/config"
 	"github.com/SerjLeo/SpanglishTutorOrigin/internal/handlers"
 	"github.com/SerjLeo/SpanglishTutorOrigin/internal/models"
+	"github.com/SerjLeo/SpanglishTutorOrigin/internal/repository"
 	"github.com/SerjLeo/mlf_backend/pkg/cache"
 	"github.com/SerjLeo/mlf_backend/pkg/email/smtp"
 	"github.com/SerjLeo/mlf_backend/pkg/templates"
@@ -16,6 +17,11 @@ func RunApp() {
 	if err != nil {
 		log.Fatal(errors.Wrap(err, "Error while reading config").Error())
 	}
+	db, err := repository.NewPostgresDB(*appConfig)
+	if err != nil {
+		log.Fatal(errors.Wrap(err, "Error while connecting to DB").Error())
+	}
+
 	port := appConfig.Http.Port
 	mailManager, err := smtp.NewSMTPSender(
 		appConfig.SMTP.Host,
@@ -35,10 +41,11 @@ func RunApp() {
 	appCache := cache.NewCache(tmpls)
 
 	handler := handlers.NewHandler(handlers.HandlerConfig{
-		MailManager: mailManager,
+		MailManager:     mailManager,
 		TemplateManager: templateManager,
-		Cache: appCache,
-		TargetEmail: appConfig.SMTP.Target,
+		Cache:           appCache,
+		TargetEmail:     appConfig.SMTP.Target,
+		Repo:            repository.NewPostgresRepository(db),
 	})
 	server := models.Server{}
 

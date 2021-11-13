@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"github.com/joho/godotenv"
 	"github.com/spf13/viper"
 	"os"
@@ -18,6 +17,7 @@ type AppConfig struct {
 		Username string
 		Dbname   string
 		Sslmode  string
+		Password  string
 	}
 	SMTP struct {
 		Host   string
@@ -47,8 +47,6 @@ func InitConfig(configDir string) (*AppConfig, error) {
 		return nil, err
 	}
 
-	fmt.Printf("%+v", cfg)
-
 	return &cfg, nil
 }
 
@@ -67,6 +65,10 @@ func populateEnv(cfg *AppConfig) error {
 
 	if smtpFrom, exists := os.LookupEnv("SMTP_FROM"); exists {
 		cfg.SMTP.From = smtpFrom
+	}
+
+	if postgresPass, exists := os.LookupEnv("POSTGRES_PASS"); exists {
+		cfg.Postgres.Password = postgresPass
 	}
 
 	return nil

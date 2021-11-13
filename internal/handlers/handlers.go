@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"github.com/SerjLeo/SpanglishTutorOrigin/internal/repository"
 	"github.com/SerjLeo/mlf_backend/pkg/cache"
 	"github.com/SerjLeo/mlf_backend/pkg/email"
 	"github.com/SerjLeo/mlf_backend/pkg/templates"
@@ -13,6 +14,7 @@ type Handler struct {
 	TemplateManager templates.TemplateManager
 	TargetEmail     string
 	Cache           *cache.Cache
+	Repo            repository.Repository
 }
 
 type HandlerConfig struct {
@@ -20,6 +22,7 @@ type HandlerConfig struct {
 	TemplateManager templates.TemplateManager
 	TargetEmail     string
 	Cache           *cache.Cache
+	Repo            repository.Repository
 }
 
 func NewHandler(config HandlerConfig) *Handler {
@@ -28,6 +31,7 @@ func NewHandler(config HandlerConfig) *Handler {
 		TemplateManager: config.TemplateManager,
 		TargetEmail:     config.TargetEmail,
 		Cache:           config.Cache,
+		Repo:            config.Repo,
 	}
 }
 

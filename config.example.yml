@@ -7,11 +7,7 @@ postgres:
   username: "username"
   dbname: "dbname"
   sslmode: "disable"
-  password: "password"
 smtp:
   host: "smtp.gmail.com"
   port: "587"
-  password: "password"
-  from: "from@mail.com"
-  target: "target@mail.com"
 templatesPath: "./templates"
