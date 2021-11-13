@@ -26,6 +26,7 @@ jobs:
           echo SMTP_PASSWORD=${{ secrets.SMTP_PASSWORD }} >> .env
           echo SMTP_FROM=${{ secrets.SMTP_FROM }} >> .env
           echo SMTP_TARGET=${{ secrets.SMTP_TARGET }} >> .env
+          echo POSTGRES_PASS=${{ secrets.POSTGRES_PASS }} >> .env
           cat .env
 
       - name: Build container image
