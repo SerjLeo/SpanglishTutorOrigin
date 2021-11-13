@@ -5,7 +5,7 @@ export default class Validator implements ValidatorService {
     constructor(private readonly alert: AlertService) {
     }
 
-    validateForm(form: HTMLFormElement): boolean {
+    validateForm(form: HTMLFormElement, errorTarget: string): boolean {
         let isEmpty = false
         let emptyFields = ''
         let isLong = false
@@ -27,11 +27,11 @@ export default class Validator implements ValidatorService {
                 isEmpty = true
             }
             if (value.trim().length>60 && key !== 'goals'){
-                this.alert.validationAlert(`Максимальная длина строки - 60 символов`)
+                this.alert.validationAlert(`Максимальная длина строки - 60 символов`, errorTarget)
                 isLong = true
             }
         }
-        if (isEmpty) this.alert.validationAlert(`Заполните, пожалуйста, поля:${emptyFields.slice(0,-1)}`)
+        if (isEmpty) this.alert.validationAlert(`Заполните, пожалуйста, поля:${emptyFields.slice(0,-1)}`, errorTarget)
         return !isEmpty && !isLong
     }
 

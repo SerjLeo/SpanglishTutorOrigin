@@ -17,10 +17,12 @@ function init() {
   const ValidationService = new Validator(AlertService);
   const ApiService = new Api(api_url, AlertService);
   const FormControlService = new FormControl(ApiService, ValidationService, AlertService);
+  const feedbackForm = document.querySelector('#feedback-form') as HTMLFormElement;
+  if(feedbackForm) FormControlService.listenToFeedbackForm(feedbackForm);
   const ViewService = new View(ValidationService)
   const modalEl = document.querySelector('.modal-root') as HTMLElement;
-  if(!modalEl) return;
-  new Modal(modalEl, ViewService, FormControlService)
+  if(modalEl) new Modal(modalEl, ViewService, FormControlService);
+
 }
 
 init();

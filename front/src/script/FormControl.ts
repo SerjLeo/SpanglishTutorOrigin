@@ -24,15 +24,30 @@ export default class FormControl implements FormControlService {
         backBtn.addEventListener('click', () => backHandler())
     }
 
+    listenToFeedbackForm(form: HTMLFormElement) {
+        form.addEventListener('submit', (e: Event) => this.handleFeedbackSubmit(e, form))
+    }
+
     async handleFormSubmit(e: Event, form: HTMLFormElement, title: string) {
         e.preventDefault()
-        if(!this.validator.validateForm(form)) return
+        if(!this.validator.validateForm(form, '.form-validation-error')) return
         const formData = new FormData(form)
         const data: Record<string, any> = {}
         for (const [key, value] of formData.entries()) {
             data[key] = value
         }
         await this.apiService.sendForm(data, title)
+    }
+
+    async handleFeedbackSubmit(e: Event, form: HTMLFormElement) {
+        e.preventDefault()
+        if(!this.validator.validateForm(form, '.feedback-validation-error')) return
+        const formData = new FormData(form)
+        const data: Record<string, any> = {}
+        for (const [key, value] of formData.entries()) {
+            data[key] = value
+        }
+        await this.apiService.sendFeedback(data)
     }
 
     async handleTestSubmit(e: Event, form: HTMLFormElement, title: string, submitHandler: EmptyHandler, step: number, answerHandler: AnswerHandler) {
@@ -51,7 +66,7 @@ export default class FormControl implements FormControlService {
         answerHandler(step, id)
         submitHandler()
 
-        if(step === 3 && this.validator.validateForm(form)){
+        if(step === 3 && this.validator.validateForm(form, '.form-validation-error')){
             await this.apiService.sendTest(this.form, title)
         }
     }

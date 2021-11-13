@@ -1,17 +1,24 @@
 export interface ApiService {
   sendForm(data: any, title: string): Promise<void>
+  sendFeedback(data: any): Promise<void>
   sendTest(data: any, title: string): Promise<void>
 }
 
 export type AlertTypes = 'success' | 'error'
 
+export type AlertConfig = {
+  type?: AlertTypes
+  rootSelector?: string
+  clearOnTimeout?: boolean
+}
+
 export interface AlertService {
-  validationAlert(msg: string): void
-  invokeAlert(msg: string, type?: AlertTypes): void
+  validationAlert(msg: string, errorTarget: string): void
+  invokeModalAlert(message: string, cfg?: AlertConfig): void
 }
 
 export interface ValidatorService {
-  validateForm(form: HTMLFormElement): boolean
+  validateForm(form: HTMLFormElement, errorTarget: string): boolean
   validateTest(): void
 }
 
