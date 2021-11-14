@@ -21,7 +21,7 @@ func (r *PostgresDB) CreateFeedback(feedback *models.Feedback) (*models.Feedback
 	row := r.db.QueryRow(query, feedback.Name, feedback.Lang, feedback.Text)
 	result := &models.Feedback{}
 
-	if err := row.Scan(result); err != nil {
+	if err := row.Scan(&result.Id, &result.Name, &result.Lang, &result.Text, &result.IsVisible, &result.CreatedAt); err != nil {
 		return result, err
 	}
 	return result, nil
@@ -32,7 +32,6 @@ func (r *PostgresDB) GetFeedbackList() []models.Feedback {
 }
 
 func NewPostgresDB(cfg config.AppConfig) (*sqlx.DB, error) {
-	fmt.Println(cfg.Postgres.Host, cfg.Postgres.Port)
 	db, err := sqlx.Open("postgres", fmt.Sprintf("host=%s port=%s dbname=%s user=%s password=%s sslmode=%s",
 		cfg.Postgres.Host, cfg.Postgres.Port, cfg.Postgres.Dbname, cfg.Postgres.Username, cfg.Postgres.Password, cfg.Postgres.Sslmode))
 	if err != nil {

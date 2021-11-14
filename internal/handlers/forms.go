@@ -66,19 +66,20 @@ func (h *Handler) sendFeedback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if _, err := h.Repo.CreateFeedback(&f.Feedback); err != nil {
+	result, err := h.Repo.CreateFeedback(&f.Feedback)
+	if err != nil {
 		errorResponse(w, http.StatusInternalServerError, "Ошибка при сохранении отзыва. Повторите попытку позже.")
 		return
 	}
 
-	f.Feedback.Lang = helpers.LangVocabulary(f.Feedback.Lang)
+	result.Lang = helpers.LangVocabulary(result.Lang)
 	sendFeedbackTemplate, exist := h.Cache.Templates["feedbackEmail.html"]
 	if !exist {
 		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")
 		return
 	}
 
-	bodyString, err := h.TemplateManager.ExecuteTemplateToString(sendFeedbackTemplate, f.Feedback)
+	bodyString, err := h.TemplateManager.ExecuteTemplateToString(sendFeedbackTemplate, result)
 	if err != nil {
 		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")
 		return

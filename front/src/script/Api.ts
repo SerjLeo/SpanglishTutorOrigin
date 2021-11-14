@@ -28,7 +28,7 @@ export default class Api implements ApiService {
     async sendFeedback(data: any): Promise<void> {
         try {
             const res: any = await axios.post("/send-feedback", {feedback: data});
-            this.alertService.invokeModalAlert(res.data, {clearOnTimeout: false, rootSelector: '.feedback-form__wrap'})
+            this.alertService.invokeModalAlert(res?.data?.data, {clearOnTimeout: false, rootSelector: '.feedback-form__wrap'})
         } catch (error: any) {
             const errMessage = isAxiosError(error) ? error?.response?.data?.error || 'Ошибка!' : 'Ошибка!';
             this.alertService.invokeModalAlert(errMessage, {clearOnTimeout: false, rootSelector: '.feedback-form__wrap', type: 'error'})
