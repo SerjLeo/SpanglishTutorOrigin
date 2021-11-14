@@ -39,6 +39,7 @@ func (h *Handler) InitRouter() http.Handler {
 	mux := chi.NewRouter()
 
 	mux.Post("/send-form", h.sendForm)
+	mux.Post("/send-feedback", h.sendFeedback)
 
 	fileServer := http.FileServer(http.Dir("./static"))
 	mux.Handle("/*", fileServer)
