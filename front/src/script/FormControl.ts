@@ -36,7 +36,10 @@ export default class FormControl implements FormControlService {
         for (const [key, value] of formData.entries()) {
             data[key] = value
         }
+        const formBtn = form.querySelector('button') as HTMLButtonElement;
+        if(formBtn) formBtn.disabled = true;
         await this.apiService.sendForm(data, title)
+        if(formBtn) formBtn.disabled = false;
     }
 
     async handleFeedbackSubmit(e: Event, form: HTMLFormElement) {
@@ -47,7 +50,10 @@ export default class FormControl implements FormControlService {
         for (const [key, value] of formData.entries()) {
             data[key] = value
         }
+        const formBtn = form.querySelector('button') as HTMLButtonElement;
+        if(formBtn) formBtn.disabled = true;
         await this.apiService.sendFeedback(data)
+        if(formBtn) formBtn.disabled = false;
     }
 
     async handleTestSubmit(e: Event, form: HTMLFormElement, title: string, submitHandler: EmptyHandler, step: number, answerHandler: AnswerHandler) {
