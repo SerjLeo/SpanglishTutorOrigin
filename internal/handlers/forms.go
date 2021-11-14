@@ -92,4 +92,7 @@ func (h *Handler) sendFeedback(w http.ResponseWriter, r *http.Request) {
 	if err := h.MailManager.SendEmail(input); err != nil {
 		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")
 	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(successPayload{Data: "Отзыв оставлен, спасибо!"})
 }

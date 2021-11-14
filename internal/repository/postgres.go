@@ -8,21 +8,28 @@ import (
 	_ "github.com/lib/pq"
 )
 
+const (
+	feedbackTable = "feedback"
+)
+
 type PostgresDB struct {
 	db *sqlx.DB
 }
 
-func (r *PostgresDB) CreateFeedback(*models.Feedback) (*models.Feedback, error) {
-	return nil, nil
+func (r *PostgresDB) CreateFeedback(feedback *models.Feedback) (*models.Feedback, error) {
+	query := fmt.Sprintf(`INSERT into %s (name, lang, text) VALUES ($1, $2, $3) RETURNING *`, feedbackTable)
+	row := r.db.QueryRow(query, feedback.Name, feedback.Lang, feedback.Text)
+	result := &models.Feedback{}
+
+	if err := row.Scan(result); err != nil {
+		return result, err
+	}
+	return result, nil
 }
 
 func (r *PostgresDB) GetFeedbackList() []models.Feedback {
 	return nil
 }
-
-const (
-	feedbackTable = "feedback"
-)
 
 func NewPostgresDB(cfg config.AppConfig) (*sqlx.DB, error) {
 	fmt.Println(cfg.Postgres.Host, cfg.Postgres.Port)
