@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"github.com/SerjLeo/SpanglishTutorOrigin/internal/helpers"
 	"github.com/SerjLeo/SpanglishTutorOrigin/internal/models"
 	"github.com/SerjLeo/mlf_backend/pkg/email"
 	"net/http"
@@ -29,6 +30,7 @@ func (h *Handler) sendForm(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	f.Form.Language = helpers.LangVocabulary(f.Form.Language)
 	sendFormTemplate, exist := h.Cache.Templates["formEmail.html"]
 	if !exist {
 		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")
@@ -64,14 +66,12 @@ func (h *Handler) sendFeedback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//Add to DB
-
 	if _, err := h.Repo.CreateFeedback(&f.Feedback); err != nil {
 		errorResponse(w, http.StatusInternalServerError, "Ошибка при сохранении отзыва. Повторите попытку позже.")
 		return
 	}
 
-	//Send email
+	f.Feedback.Lang = helpers.LangVocabulary(f.Feedback.Lang)
 	sendFeedbackTemplate, exist := h.Cache.Templates["feedbackEmail.html"]
 	if !exist {
 		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")

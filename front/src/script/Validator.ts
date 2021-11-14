@@ -14,10 +14,12 @@ export default class Validator implements ValidatorService {
             phone: 'телефон',
             email: 'email',
             language: 'язык',
+            lang: 'язык',
             goals: 'цели',
+            text: 'отзыв',
         }
         let data = new FormData(form)
-        if(!Array.from(data.keys()).includes('language')) {
+        if(!Array.from(data.keys()).includes('language') && !Array.from(data.keys()).includes('lang')) {
             isEmpty = true;
             emptyFields += ' язык,'
         }
