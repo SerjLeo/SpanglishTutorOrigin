@@ -33,8 +33,13 @@ func (r *PostgresDB) ActivateFeedback(id int) error {
 	return err
 }
 
-func (r *PostgresDB) GetFeedbackList() []models.Feedback {
-	return nil
+func (r *PostgresDB) GetFeedbackList() ([]models.Feedback, error) {
+	query := fmt.Sprintf(`SELECT id, name, lang, text FROM %s WHERE is_visible=true ORDER BY created_at DESC`, feedbackTable)
+
+	result := []models.Feedback{}
+
+	err := r.db.Select(&result, query)
+	return result, err
 }
 
 func NewPostgresDB(cfg config.AppConfig) (*sqlx.DB, error) {

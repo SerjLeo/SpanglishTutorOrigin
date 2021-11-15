@@ -7,7 +7,7 @@ import (
 
 type Repository interface {
 	CreateFeedback(*models.Feedback) (*models.Feedback, error)
-	GetFeedbackList() []models.Feedback
+	GetFeedbackList() ([]models.Feedback, error)
 	ActivateFeedback(id int) error
 }
 
