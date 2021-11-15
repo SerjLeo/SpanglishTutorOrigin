@@ -4,8 +4,8 @@ go 1.16
 
 require (
 	github.com/SerjLeo/mlf_backend v0.0.0-20211007074315-7df31857f69d
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-chi/chi/v5 v5.0.4
+	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/jmoiron/sqlx v1.3.4
 	github.com/joho/godotenv v1.4.0
 	github.com/lib/pq v1.10.2
