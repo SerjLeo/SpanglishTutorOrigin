@@ -3,9 +3,11 @@ import {ApiService} from "./types";
 import {languageVocabulary} from "./entities/helpers";
 
 async function populateSlides(api: ApiService) {
+  const rootSliderEl = document.querySelector('.slider-target') as HTMLElement;
+  const sliderEl = document.querySelector('.responsive_slider') as HTMLElement;
+  if(!rootSliderEl || !sliderEl) return;
   const feedbacks = await api.getFeedback();
-  const rootSliderEl = document.querySelector('.slider-target')
-  if(!rootSliderEl) return;
+  if(feedbacks.length) sliderEl.style.display = 'block';
   feedbacks.forEach(feedback => {
     const slide = document.createElement('div');
     slide.classList.add('splide__slide', 'slide');
