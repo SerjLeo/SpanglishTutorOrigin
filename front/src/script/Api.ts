@@ -1,5 +1,5 @@
-import {AlertService, ApiService} from "./types";
-import axios from "axios";
+import {AlertService, ApiService, Feedback} from "./types";
+import axios, {AxiosResponse} from "axios";
 import {isAxiosError} from "./entities/typeGuards";
 
 export default class Api implements ApiService {
@@ -33,5 +33,10 @@ export default class Api implements ApiService {
             const errMessage = isAxiosError(error) ? error?.response?.data?.error || 'Ошибка!' : 'Ошибка!';
             this.alertService.invokeModalAlert(errMessage, {clearOnTimeout: false, rootSelector: '.feedback-form__wrap', type: 'error'})
         }
+    }
+
+    async getFeedback(): Promise<Feedback[]> {
+        const res = await axios.get<unknown, AxiosResponse<{data: Feedback[]}, unknown>>("/feedback-list");
+        return res.data.data;
     }
 }

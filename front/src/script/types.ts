@@ -1,7 +1,16 @@
+export type availableLanguage = 'eng' | 'esp'| 'both'
+export type Feedback = {
+  id: number,
+  name: string,
+  lang: availableLanguage,
+  text: string
+}
+
 export interface ApiService {
   sendForm(data: any, title: string): Promise<void>
   sendFeedback(data: any): Promise<void>
   sendTest(data: any, title: string): Promise<void>
+  getFeedback(): Promise<Feedback[]>
 }
 
 export type AlertTypes = 'success' | 'error'

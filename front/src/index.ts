@@ -11,11 +11,11 @@ import Modal from "./script/Modal";
 
 function init() {
   lazyload();
-  runSlider();
   const api_url: string = "test_url";
   const AlertService = new Alert();
   const ValidationService = new Validator(AlertService);
   const ApiService = new Api(api_url, AlertService);
+  runSlider(ApiService);
   const FormControlService = new FormControl(ApiService, ValidationService, AlertService);
   const feedbackForm = document.querySelector('#feedback-form') as HTMLFormElement;
   if(feedbackForm) FormControlService.listenToFeedbackForm(feedbackForm);
