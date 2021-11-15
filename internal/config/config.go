@@ -9,6 +9,7 @@ import (
 type AppConfig struct {
 	Http struct {
 		Port string
+		Host string
 	}
 	Env      string
 	Postgres struct {
@@ -17,7 +18,7 @@ type AppConfig struct {
 		Username string
 		Dbname   string
 		Sslmode  string
-		Password  string
+		Password string
 	}
 	SMTP struct {
 		Host   string
@@ -27,6 +28,7 @@ type AppConfig struct {
 		Target string
 	}
 	TemplatesPath string
+	JWTSignKey    string
 }
 
 func InitConfig(configDir string) (*AppConfig, error) {
@@ -73,6 +75,10 @@ func populateEnv(cfg *AppConfig) error {
 
 	if postgresHost, exists := os.LookupEnv("POSTGRES_HOST"); exists {
 		cfg.Postgres.Host = postgresHost
+	}
+
+	if signKey, exists := os.LookupEnv("JWT_SIGN_KEY"); exists {
+		cfg.JWTSignKey = signKey
 	}
 
 	return nil

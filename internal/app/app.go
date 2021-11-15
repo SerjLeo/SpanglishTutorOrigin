@@ -5,6 +5,7 @@ import (
 	"github.com/SerjLeo/SpanglishTutorOrigin/internal/handlers"
 	"github.com/SerjLeo/SpanglishTutorOrigin/internal/models"
 	"github.com/SerjLeo/SpanglishTutorOrigin/internal/repository"
+	"github.com/SerjLeo/SpanglishTutorOrigin/pkg/token"
 	"github.com/SerjLeo/mlf_backend/pkg/cache"
 	"github.com/SerjLeo/mlf_backend/pkg/email/smtp"
 	"github.com/SerjLeo/mlf_backend/pkg/templates"
@@ -33,6 +34,11 @@ func RunApp() {
 		log.Fatal(errors.Wrap(err, "Error while creating mail manager").Error())
 	}
 
+	tokenManager, err := token.NewTokenManager(appConfig.JWTSignKey)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+
 	templateManager := templates.NewStandardTemplatesManager(appConfig.TemplatesPath)
 	tmpls, err := templateManager.ParseTemplates()
 	if err != nil {
@@ -46,6 +52,8 @@ func RunApp() {
 		Cache:           appCache,
 		TargetEmail:     appConfig.SMTP.Target,
 		Repo:            repository.NewPostgresRepository(db),
+		TokenManager:    tokenManager,
+		HostURL:         appConfig.Http.Host,
 	})
 	server := models.Server{}
 

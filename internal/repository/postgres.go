@@ -27,6 +27,12 @@ func (r *PostgresDB) CreateFeedback(feedback *models.Feedback) (*models.Feedback
 	return result, nil
 }
 
+func (r *PostgresDB) ActivateFeedback(id int) error {
+	query := fmt.Sprintf(`UPDATE %s SET is_visible = true WHERE id=$1`, feedbackTable)
+	_, err := r.db.Exec(query, id)
+	return err
+}
+
 func (r *PostgresDB) GetFeedbackList() []models.Feedback {
 	return nil
 }
