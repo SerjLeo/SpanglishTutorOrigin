@@ -1,5 +1,8 @@
-.response_slider {
-  //height: 80vh;
+.responsive_slider {
+  margin-bottom: 30px;
+  .splide__pagination {
+    bottom: -30px;
+  }
 }
 
 .slide {
@@ -7,27 +10,33 @@
   width: 100%;
 }
 
-.slide-content {
-  padding: 30px 100px;
+.slide__wrap {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  font-family: 'IBM', sans-serif;
   height: 100%;
 }
 
-.slide-content p {
-  width: 70%;
+.slide__content {
+  border-radius: 6px;
+  background-color: beige;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  height: 100%;
 }
 
-.slide-content h5 {
-  margin: 0;
+.slide__content-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
 }
-.slide-content h4 {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  font-weight: bold;
+
+.slide__content-lang {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
 .left-arrow,
@@ -53,15 +62,12 @@
   fill: rgba(150, 149, 149, 0.56)
 }
 
-.slider-content {
-  width: 100%;
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 1.56;
-  font-size: 20px;
-  font-family: 'IBM', 'Roboto', sans-serif;
+@media screen and (max-width: 640px) {
+  .right-arrow {
+    display: none;
+  }
+
+  .left-arrow {
+    display: none;
+  }
 }
