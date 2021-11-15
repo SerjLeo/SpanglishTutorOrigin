@@ -28,6 +28,7 @@ jobs:
           echo SMTP_TARGET=${{ secrets.SMTP_TARGET }} >> .env
           echo POSTGRES_PASS=${{ secrets.POSTGRES_PASS }} >> .env
           echo POSTGRES_HOST=${{ secrets.POSTGRES_HOST }} >> .env
+          echo JWT_SIGN_KEY=${{ secrets.JWT_SIGN_KEY }} >> .env
           cat .env
 
       - name: Build container image

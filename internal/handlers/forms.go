@@ -116,7 +116,7 @@ func (h *Handler) sendFeedback(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) activateFeedback(w http.ResponseWriter, r *http.Request) {
-	activateFeedbackTemplate, exist := h.Cache.Templates["feedbackEmail.html"]
+	activateFeedbackTemplate, exist := h.Cache.Templates["feedbackActivation.html"]
 
 	if !exist {
 		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")
@@ -136,13 +136,14 @@ func (h *Handler) activateFeedback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	feedbackId, ok := tokenData.TokenData.(int)
+
+	feedbackId, ok := tokenData.TokenData.(float64)
 	if !ok {
 		h.sendFeedbackActivationTemplate(w, activateFeedbackTemplate,"Неверный формат токена.")
 		return
 	}
 
-	err = h.Repo.ActivateFeedback(feedbackId)
+	err = h.Repo.ActivateFeedback(int(feedbackId))
 	if err != nil {
 		h.sendFeedbackActivationTemplate(w, activateFeedbackTemplate,"Ошибка при активации токена.")
 		return
