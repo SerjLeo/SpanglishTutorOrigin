@@ -59,6 +59,7 @@
     background-attachment: fixed;
     position: relative;
     color: $white;
+    visibility: hidden;
 }
 
 .block-1 .content {
@@ -754,13 +755,15 @@
     z-index: 10000;
     position: fixed;
     bottom: 30px;
-    right: 50px;
+    right: 30px;
+    visibility: hidden;
 }
 
 .sign-up-btn {
     display: flex;
     position: relative;
     align-items: center;
+    height: 49px;
     span {
         margin-right: 8px;
     }
@@ -803,6 +806,7 @@
     justify-content: center;
     border-radius: 4px;
     width: 130px;
+    visibility: hidden;
 }
 
 .contacts__items {

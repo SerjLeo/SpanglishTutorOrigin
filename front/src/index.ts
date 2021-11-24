@@ -8,9 +8,11 @@ import FormControl from "./script/FormControl";
 import runSlider from "./script/Slider"
 import View from "./script/View";
 import Modal from "./script/Modal";
+import {Animations} from "./script/Animations";
 
 function init() {
   lazyload();
+  new Animations();
   const api_url: string = "test_url";
   const AlertService = new Alert();
   const ValidationService = new Validator(AlertService);

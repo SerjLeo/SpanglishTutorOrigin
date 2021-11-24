@@ -84,7 +84,9 @@ module.exports = {
     optimization: optimization(),
     plugins: plugins(),
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
         compress: true,
         port: 3000,
         hot: isDev,
