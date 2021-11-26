@@ -33,6 +33,12 @@ func (r *PostgresDB) ActivateFeedback(id int) error {
 	return err
 }
 
+func (r *PostgresDB) DeleteFeedback(id int) error {
+	query := fmt.Sprintf(`DELETE FROM %s WHERE id=$1`, feedbackTable)
+	_, err := r.db.Exec(query, id)
+	return err
+}
+
 func (r *PostgresDB) GetFeedbackList() ([]models.Feedback, error) {
 	query := fmt.Sprintf(`SELECT id, name, lang, text FROM %s WHERE is_visible=true ORDER BY created_at DESC`, feedbackTable)
 

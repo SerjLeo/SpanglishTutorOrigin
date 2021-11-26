@@ -49,6 +49,7 @@ func (h *Handler) InitRouter() http.Handler {
 	mux.Post("/send-form", h.sendForm)
 
 	mux.Get("/activate-feedback", h.activateFeedback)
+	mux.Get("/delete-feedback", h.deleteFeedback)
 	mux.Get("/feedback-list", h.feedbackList)
 	mux.Post("/send-feedback", h.sendFeedback)
 
