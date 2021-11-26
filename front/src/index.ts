@@ -9,10 +9,12 @@ import runSlider from "./script/Slider"
 import View from "./script/View";
 import Modal from "./script/Modal";
 import {Animations} from "./script/Animations";
+import initCursor from "./script/Coursor";
 
 function init() {
   lazyload();
-  new Animations();
+  // new Animations();
+  initCursor();
   const api_url: string = "test_url";
   const AlertService = new Alert();
   const ValidationService = new Validator(AlertService);
@@ -24,7 +26,6 @@ function init() {
   const ViewService = new View(ValidationService)
   const modalEl = document.querySelector('.modal-root') as HTMLElement;
   if(modalEl) new Modal(modalEl, ViewService, FormControlService);
-
 }
 
 init();
