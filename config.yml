@@ -3,7 +3,7 @@ http:
   host: "spanglishtutor.ru"
 env: "local"
 postgres:
-  port: "5436"
+  port: "5432"
   username: "postgres"
   dbname: "postgres"
   sslmode: "disable"
