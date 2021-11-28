@@ -43,7 +43,7 @@ func (h *Handler) sendFeedback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	deleteToken, err := h.TokenManager.GenerateToken(result.Id, time.Hour*24000000)
+	deleteToken, err := h.TokenManager.GenerateToken(result.Id, time.Hour*240000)
 	if err != nil {
 		errorResponse(w, http.StatusInternalServerError, "Ошибка при отправке формы. Повторите попытку позже.")
 		return
