@@ -1,5 +1,5 @@
 http:
-  port: "80"
+  port: "443"
   host: "spanglishtutor.ru"
 env: "local"
 postgres:

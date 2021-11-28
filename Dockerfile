@@ -26,6 +26,6 @@ COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/config.yml .
 COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/.env .
 COPY --from=1 /github.com/SerjLeo/SpanglishTutorOrigin/templates/ ./templates
 
-EXPOSE 80
+EXPOSE 443
 
 CMD ["./main"]
