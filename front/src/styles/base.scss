@@ -2,8 +2,6 @@ $white: rgb(245, 240, 240);
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html, body {
@@ -11,11 +9,6 @@ html, body {
   padding: 0;
   text-decoration: none;
   width: 100%;
-}
-
-body, h1, h2, h3, h4, h5, h6, p, section, div, nav, ul, li, button, figure, input, textarea {
-  margin: 0;
-  padding: 0;
 }
 
 body {
