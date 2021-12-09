@@ -1,0 +1,86 @@
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px 0 60px;
+  background-color: rgba(255,255,255,0.6);
+  justify-content: space-between;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__nav-link {
+  margin-right: 12px;
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.header__label {
+  font-family: Amatic, sans-serif;
+  font-size: 60px;
+  margin: 0;
+}
+
+// CONTACTS
+
+.contacts__wrap {
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  width: 130px;
+  //visibility: hidden;
+}
+
+.contacts__items {
+  display: flex;
+  align-items: center;
+  width: 0;
+  transition: width 0.2s ease;
+  overflow: hidden;
+}
+
+.contacts-main {
+  transition: width 0.3s ease;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contacts__item {
+  width: 25px;
+  height: 25px;
+  min-width: 25px;
+  display: block;
+  margin-right: 12px;
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.contacts__item-inst {
+  background: url('../assets/icons/instagram.png') center/cover;
+}
+
+.contacts__item-profi {
+  background: url('../assets/icons/profi.png') center/cover;
+}
+
+.contacts__wrap:hover {
+  .contacts-main {
+    width: 0;
+    transition: width 0.3s ease;
+  }
+  .contacts__items {
+    width: 100%;
+    transition: width 0.2s ease;
+  }
+}
