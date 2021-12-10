@@ -12,19 +12,24 @@ export class Animations {
     }
 
     init() {
-        this.animateIntro();
+        this.animateWelcome();
+        window.onbeforeunload = function () {
+            document.querySelector('body')!.style.visibility = 'hidden';
+            window.scrollTo(0, 0);
+        }
     }
 
-    animateIntro() {
+    animateWelcome() {
         const mainTimeline = gsap.timeline({
             repeat: 0
         })
         mainTimeline
-            .to('.block-1', {autoAlpha: 1, duration: 2, ease: 'power3'})
-            .add('backgroundIn')
-            .fromTo('.block-1__animate', {autoAlpha: 0, yPercent: "60"}, {autoAlpha: 1, duration: 0.8, stagger: 0.3, yPercent: "0", ease: 'power3'}, 'backgroundIn-=1')
-            .add('titleIn')
-            .fromTo('.contacts__wrap',{autoAlpha: 0, xPercent: "30"},  {autoAlpha: 1, duration: 2, xPercent: "0", ease: 'power3'},'titleIn+=0.5')
-            .fromTo('.fast-sign-up',{autoAlpha: 0, xPercent: "30"},  {autoAlpha: 1, duration: 2, xPercent: "0", ease: 'power3'},'titleIn')
+            .set(['.welcome'],{autoAlpha: 1})
+            .to('.header', {autoAlpha: 1, duration: 3, ease: 'power3'})
+            .add('headerIn')
+            .fromTo('.welcome__text', {autoAlpha: 0, yPercent: "20"}, {autoAlpha: 1, duration: 1.2, yPercent: "0", ease: 'power3'}, 'headerIn-=1.2')
+            .fromTo('.welcome__hands', {autoAlpha: 0, yPercent: "60"}, {autoAlpha: 1, duration: 1.6, yPercent: "0", ease: 'power1'}, 'headerIn')
+            .add('textIn')
+            .to('html', {overflowY: 'auto'}, 'textIn+=1')
     }
 }

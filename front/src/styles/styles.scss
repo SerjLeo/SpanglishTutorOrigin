@@ -7,6 +7,7 @@
 @import "slider";
 @import "header";
 @import "welcome";
+@import "classes";
 
 //ALERTS
 
@@ -63,7 +64,6 @@
     position: fixed;
     bottom: 30px;
     right: 30px;
-    visibility: hidden;
 }
 
 .sign-up-btn {

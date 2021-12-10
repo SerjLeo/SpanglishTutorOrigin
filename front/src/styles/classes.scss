@@ -1,0 +1,26 @@
+.classes {
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.classes__title {
+  margin-top: 40px;
+}
+
+.classes__container {
+  margin-top: 30px;
+  display: flex;
+}
+
+.class {
+
+}
+
+.class__image-container {
+  height: 150px;
+  width: 150px;
+  min-width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+}

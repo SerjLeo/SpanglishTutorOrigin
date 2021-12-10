@@ -27,4 +27,6 @@ function init() {
 
 }
 
+// new Animations();
+
 // init();
