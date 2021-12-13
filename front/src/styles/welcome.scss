@@ -7,7 +7,7 @@
 }
 
 .welcome__text {
-  height: 35%;
+  height: 40%;
   position: sticky;
   top: 160px;
   padding-left: 60px;
@@ -18,11 +18,10 @@
 }
 
 .welcome__hands {
-  height: 65%;
-  min-height: 65%;
+  height: 60%;
   background-image: url("../assets/images/hands.jpeg");
-  background-position: bottom center;
-  background-size: contain;
+  background-position: top center;
+  background-size: cover;
   background-repeat: no-repeat;
   z-index: 1;
 }

@@ -12,11 +12,12 @@ export class Animations {
     }
 
     init() {
-        this.animateWelcome();
-        window.onbeforeunload = function () {
-            document.querySelector('body')!.style.visibility = 'hidden';
-            window.scrollTo(0, 0);
-        }
+        // this.animateWelcome();
+        // window.onbeforeunload = function () {
+        //     document.querySelector('body')!.style.visibility = 'hidden';
+        //     window.scrollTo(0, 0);
+        // }
+        this.animateLine();
     }
 
     animateWelcome() {
@@ -31,5 +32,9 @@ export class Animations {
             .fromTo('.welcome__hands', {autoAlpha: 0, yPercent: "60"}, {autoAlpha: 1, duration: 1.6, yPercent: "0", ease: 'power1'}, 'headerIn')
             .add('textIn')
             .to('html', {overflowY: 'auto'}, 'textIn+=1')
+    }
+
+    animateLine() {
+
     }
 }
