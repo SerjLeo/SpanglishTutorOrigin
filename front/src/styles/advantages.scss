@@ -4,6 +4,7 @@
   margin: 0 auto;
   position: relative;
   padding-bottom: 120px;
+  overflow: hidden;
 }
 
 .advantages__title {
@@ -75,7 +76,9 @@
   text-align: center;
 }
 
-svg.svg-line {
+svg.svg-line,
+svg.svg-line__cover,
+svg.svg-line__plane {
   position:absolute;
   overflow:visible;
   width: 100%;
@@ -85,7 +88,15 @@ svg.svg-line {
   z-index: 1;
 }
 
-//#plane-path {
-//  position: absolute;
-//  top: 0;
-//}
+.svg-line__plane {
+  z-index: 3;
+}
+
+svg.svg-line__cover {
+  top: 100px;
+}
+
+#plane-path {
+  opacity: 0;
+  visibility: hidden;
+}
