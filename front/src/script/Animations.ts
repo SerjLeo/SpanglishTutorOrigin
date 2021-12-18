@@ -48,7 +48,9 @@ export class Animations {
     calcSVGPath(): string {
         const pathData: string[] = []
         const SVGContainer = document.querySelector('.svg-line') as SVGElement;
-        pathData.push(`M ${SVGContainer.getBoundingClientRect().width / 2} 100`)
+        pathData.push(`M ${SVGContainer.getBoundingClientRect().width / 2} 0`)
+        const titleContainer = document.querySelector('.advantages__title') as HTMLDivElement;
+        pathData.push(`V ${titleContainer.getBoundingClientRect().height}`)
         const textContainers = document.querySelectorAll<HTMLElement>('.advantages__section__text')
         //First line
         const firstContainer = textContainers[0].getBoundingClientRect()
@@ -73,36 +75,73 @@ export class Animations {
     animateLine() {
         const path = this.calcSVGPath()
         const pathLine = document.querySelector('.svg-line__path') as SVGPathElement;
+        const pathLineCover = document.querySelector('.svg-line__path-cover') as SVGPathElement;
         pathLine.setAttribute('d', path);
+        pathLineCover.setAttribute('d', path);
+        const pathLength = pathLineCover.getTotalLength();
         const timeline = gsap.timeline()
         timeline
-            .set('#plane-path', {autoAlpha: 1})
-            .to('#plane-path', {
+            .set('.svg-line__path-cover', {strokeDasharray: `${pathLength} ${pathLength}`})
+            .set('.plane-icon', { autoAlpha: 1 })
+            .to('.plane-icon', {
                 ease: 'linear',
                 motionPath: {
                     path: '.svg-line__path',
-                    autoRotate: 50,
+                    autoRotate: 90,
                     align: '.svg-line__path',
-                    alignOrigin: [0.5, 0.5]
+                    alignOrigin: [0.5, 1]
                 },
                 scrollTrigger: {
                     trigger: '.advantages',
                     scrub: true,
                     start: 'top center',
-                    end: () => '+=' + (document.querySelector('.advantages')!.getBoundingClientRect().height - 400),
-                    markers: true
+                    end: () => '+=' + (document.querySelector('.advantages')!.getBoundingClientRect().height - 400)
                 }
-            })
+            }, 'planeVisible -= 0.5')
 
-        gsap.to('.svg-line__cover', {
-            y: '2000',
+        gsap.to('.svg-line__path-cover', {
+            strokeDashoffset: -pathLength,
             ease: 'linear',
             scrollTrigger: {
                 trigger: '.advantages',
                 scrub: true,
                 start: 'top center',
-                end: () => '+=' + document.querySelector('.advantages')!.getBoundingClientRect().height
+                end: () => '+=' + (document.querySelector('.advantages')!.getBoundingClientRect().height - 400)
             }
+        })
+
+        const images = document.querySelectorAll('.advantages__section__image')
+        images.forEach((image, index) => {
+            gsap.fromTo(`.advantages__image-${index+1}`, {autoAlpha: 0, yPercent: 30}, {
+                autoAlpha: 1,
+                duration: 2,
+                yPercent: 0,
+                ease: 'power2',
+                scrollTrigger: {
+                    trigger: `.advantages__section-${index+1}`,
+                    toggleActions: 'restart complete none none',
+                    scrub: true,
+                    start: 'top-=180px center',
+                    end: '+=150',
+                }
+            })
+        })
+
+        const texts = document.querySelectorAll('.advantages__section__text')
+        texts.forEach((text, index) => {
+            gsap.fromTo(`.section__text-${index+1}`, {autoAlpha: 0, yPercent: 30}, {
+                autoAlpha: 1,
+                duration: 2,
+                yPercent: 0,
+                ease: 'power2',
+                scrollTrigger: {
+                    trigger: `.section__text-${index+1}`,
+                    toggleActions: 'restart complete none none',
+                    scrub: true,
+                    start: 'top-=100px center+=150px',
+                    end: '+=150'
+                }
+            })
         })
     }
 }

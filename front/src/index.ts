@@ -13,6 +13,7 @@ import {handleLinks} from "./script/Utils";
 
 function init() {
   lazyload();
+  handleLinks()
   new Animations();
   const api_url: string = "test_url";
   const AlertService = new Alert();
@@ -28,8 +29,4 @@ function init() {
 
 }
 
-new Animations();
-
-handleLinks()
-
-// init();
+init();

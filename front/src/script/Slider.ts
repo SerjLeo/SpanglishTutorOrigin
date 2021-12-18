@@ -4,9 +4,10 @@ import {languageVocabulary} from "./entities/helpers";
 
 async function populateSlides(api: ApiService) {
   const rootSliderEl = document.querySelector('.slider-target') as HTMLElement;
-  const sliderEl = document.querySelector('.responsive_slider') as HTMLElement;
+  const sliderEl = document.querySelector('.feedback__slider') as HTMLElement;
   if(!rootSliderEl || !sliderEl) return;
-  const feedbacks = await api.getFeedback();
+  // const feedbacks = await api.getFeedback();
+  const feedbacks = [{id: 1, name: 'lol', lang: 'eng', text: 'lorem kek'}]
   if(feedbacks.length) sliderEl.style.display = 'block';
   feedbacks.forEach(feedback => {
     const slide = document.createElement('div');
@@ -28,11 +29,13 @@ async function populateSlides(api: ApiService) {
 
 export default async function(api: ApiService) {
   await populateSlides(api);
-  const sliderEl = document.querySelector('.responsive_slider') as HTMLElement;
+  const sliderEl = document.querySelector('.feedback__slider') as HTMLElement;
   if(!sliderEl) return;
   new Splide(sliderEl , {
-    type   : 'loop',
+    type: 'loop',
+    pagination: false,
     perPage: 3,
+    gap: 20,
     breakpoints: {
       1300: {
         perPage: 2,
@@ -42,7 +45,6 @@ export default async function(api: ApiService) {
       },
       640: {
         perPage: 1,
-        pagination: false,
       }
     }
   }).mount();
