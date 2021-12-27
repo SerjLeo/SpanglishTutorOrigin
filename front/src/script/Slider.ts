@@ -16,9 +16,14 @@ async function populateSlides(api: ApiService) {
     slide.innerHTML = `
       <div class="slide__wrap">
         <div class="slide__content">
-            <div class="slide__content-name">${feedback.name}</div>
-            <div class="slide__content-lang">${languageVocabulary(feedback.lang)}</div>
-            <div class="slide__content-text">${feedback.text}</div>
+            <div class="slide__content-top">
+              <div class="slide__content-quotes"></div>
+              <div class="slide__content-text">${feedback.text}</div>
+            </div>
+            <div class="slide__content-bottom">
+                <div class="slide__content-name">${feedback.name}</div>
+                <div class="slide__content-lang">${languageVocabulary(feedback.lang)}</div>
+            </div>
         </div>
     </div>
     `

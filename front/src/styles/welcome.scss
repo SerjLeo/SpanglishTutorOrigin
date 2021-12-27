@@ -17,8 +17,13 @@
   font-size: 22px;
 }
 
-.welcome__hands {
+.welcome__hands__container {
   height: 60%;
+  overflow: hidden;
+}
+
+.welcome__hands {
+  height: 100%;
   background-image: url("../assets/images/hands.jpeg");
   background-position: top center;
   background-size: cover;

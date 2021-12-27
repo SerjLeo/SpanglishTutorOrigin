@@ -13,11 +13,7 @@ export class Animations {
     }
 
     init() {
-        // this.animateWelcome();
-        // window.onbeforeunload = function () {
-        //     document.querySelector('body')!.style.visibility = 'hidden';
-        //     window.scrollTo(0, 0);
-        // }
+        this.animateWelcome();
         this.animateLine();
     }
 
@@ -42,7 +38,6 @@ export class Animations {
                 ease: 'power1'
             }, 'headerIn')
             .add('textIn')
-            .to('html', {overflowY: 'auto'}, 'textIn+=1')
     }
 
     calcSVGPath(): string {

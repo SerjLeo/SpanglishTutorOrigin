@@ -10,11 +10,12 @@ export default class View implements ViewService {
     renderForm(renderContainer: HTMLElement) {
         renderContainer.innerHTML = `
         <div class="modal-form">
-            <div class="form-img"></div>
             <div class="form-text">
                 <h2>Успей записаться на занятие!</h2>
                 <p>Если вы знаете языки, вы везде будете как дома.</p>
-                <div class="form-validation-error"></div>
+                <div class="form__error-container">
+                    <div class="form-validation-error"></div>
+                </div>
                 <form id="inquirer-form" class="common-form">
                     <input type="text" name="name" placeholder="Имя" maxlength="60">
                     <input type="text" name="phone" placeholder="+7 (999) 999-99-99" maxlength="60">

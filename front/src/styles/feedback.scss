@@ -1,5 +1,6 @@
 .feedback {
-  background: linear-gradient(to right, wheat 75%, mediumpurple 75%);
+  background: linear-gradient(to right, rgba($blue2, 0.4) 75%, rgba($blue, 0.4) 75%);
+  //background: rgba($blue, 0.2);
   padding-bottom: 200px;
 }
 
@@ -22,7 +23,6 @@
 }
 
 .slide__wrap {
-  padding: 30px;
   background-color: white;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
@@ -32,6 +32,29 @@
 
 .feedback__track.splide__track {
   padding-bottom: 20px;
+}
+
+.slide__content-top {
+  padding: 30px;
+}
+
+.slide__content-quotes {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  background: url("../assets/images/quotes.png") center/cover;
+  margin-bottom: 20px;
+}
+
+.slide__content-text {
+  font-family: IBMPlexMono, sans-serif;
+  font-size: 14px;
+}
+
+
+.slide__content-bottom {
+  padding: 30px;
+  background: rgba($blue, 0.3);
 }
 
 .slide__content-name {
@@ -47,11 +70,6 @@
   font-size: 14px;
   color: gray;
   margin-bottom: 8px;
-}
-
-.slide__content-text {
-  font-family: IBMPlexMono, sans-serif;
-  font-size: 14px;
 }
 
 .splide__arrow {

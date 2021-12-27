@@ -76,21 +76,10 @@
     span {
         margin-right: 8px;
     }
-    background: beige;
+    background: rgba($blue, 1);
     padding: 12px 20px;
     border-radius: 4px;
     overflow: hidden;
-    &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 2em;
-        height: 100%;
-        background: linear-gradient(-240deg, rgba(#fff,0), rgba(#fff,0.6));
-        transform:translateX(-4em) skewX(-45deg);
-        animation: button-flash 4s infinite;
-    }
 }
 
 .sign-up-close {
@@ -99,6 +88,6 @@
     right: -8px;
     border-radius: 50%;
     display: flex;
-    background: bisque;
+    background: rgba($blue, 0.6);
     z-index: 2;
 }
