@@ -1,5 +1,5 @@
 .feedback {
-  background: linear-gradient(to right, rgba($blue2, 0.4) 75%, rgba($blue, 0.4) 75%);
+  background: linear-gradient(to right, rgba($blue2, 0.4) 75%, rgba($blue, 0.6) 75%);
   //background: rgba($blue, 0.2);
   padding-bottom: 200px;
 }
@@ -51,10 +51,41 @@
   font-size: 14px;
 }
 
-
 .slide__content-bottom {
-  padding: 30px;
-  background: rgba($blue, 0.3);
+  padding: 20px;
+  background: rgba($blue, 0.35);
+  display: flex;
+}
+
+.slide__content-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide__content-avatar {
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  background-position: center;
+  background-size: cover;
+  margin-right: 12px;
+}
+
+.slide__content-avatar.cat-1 {
+  background-image: url("../assets/images/kitty_2.png");
+}
+
+.slide__content-avatar.cat-2 {
+  background-image: url("../assets/images/kitty_3.png");
+}
+
+.slide__content-avatar.cat-3 {
+  background-image: url("../assets/images/kitty_4.png");
+}
+
+.slide__content-avatar.cat-4 {
+  background-image: url("../assets/images/kitty_5.png");
 }
 
 .slide__content-name {

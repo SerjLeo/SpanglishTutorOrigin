@@ -7,9 +7,9 @@ async function populateSlides(api: ApiService) {
   const sliderEl = document.querySelector('.feedback__slider') as HTMLElement;
   if(!rootSliderEl || !sliderEl) return;
   // const feedbacks = await api.getFeedback();
-  const feedbacks = [{id: 1, name: 'lol', lang: 'eng', text: 'lorem kek'}]
+  const feedbacks = [{id: 1, name: 'lol', lang: 'eng', text: 'lorem kek'}, {id: 2, name: 'lol2', lang: 'eng', text: 'lorem kek'}, {id: 3, name: 'lol', lang: 'esp', text: 'lorem kek dsf sdaf sdf adsfasdf sd'}]
   if(feedbacks.length) sliderEl.style.display = 'block';
-  feedbacks.forEach(feedback => {
+  feedbacks.forEach((feedback, index) => {
     const slide = document.createElement('div');
     slide.classList.add('splide__slide', 'slide');
 
@@ -21,8 +21,11 @@ async function populateSlides(api: ApiService) {
               <div class="slide__content-text">${feedback.text}</div>
             </div>
             <div class="slide__content-bottom">
-                <div class="slide__content-name">${feedback.name}</div>
-                <div class="slide__content-lang">${languageVocabulary(feedback.lang)}</div>
+                <div class="slide__content-avatar cat-${index%4+1}"></div>
+                <div class="slide__content-info">
+                  <div class="slide__content-name">${feedback.name}</div>
+                  <div class="slide__content-lang">${languageVocabulary(feedback.lang)}</div>
+                </div>
             </div>
         </div>
     </div>
