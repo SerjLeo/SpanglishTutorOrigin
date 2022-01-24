@@ -46,8 +46,10 @@ export type QuestionVariant = {
 
 export interface FormControlService {
   listenToForm(form: HTMLFormElement, title: string): void
+  listenToFeedbackForm(form: HTMLFormElement): void
 }
 
 export interface ViewService {
   renderForm(renderContainer: HTMLElement): void
+  renderFeedbackForm(renderContainer: HTMLElement): void
 }

@@ -36,6 +36,16 @@ export default class Modal {
         // })
     }
 
+    createFeedbackForm() {
+        if(!this.modal) return
+        this.modal.innerHTML = ''
+        this.view.renderFeedbackForm(this.modal)
+        const formElement = document.querySelector('#feedback-form') as HTMLFormElement
+        if(!formElement) return;
+        this.formControl.listenToFeedbackForm(formElement)
+        this.srcEl.classList.add('modal-active')
+    }
+
     closeModal() {
         this.srcEl.classList.remove('modal-active')
         if(!this.modal) return;
@@ -52,6 +62,7 @@ export default class Modal {
         document.querySelector('.open-form-single')?.addEventListener('click', () => this.createForm('Запись на индивидуальное занятие'))
         document.querySelector('.open-form-pair')?.addEventListener('click', () => this.createForm('Запись на парное занятие'))
         document.querySelector('.open-form-group')?.addEventListener('click', () => this.createForm('Запись на групповое занятие'))
+        document.querySelector('.feedback__button')?.addEventListener('click', () => this.createFeedbackForm())
         document.querySelector('.close')?.addEventListener('click', () => this.closeModal())
         document.querySelector('.sign-up-btn')?.addEventListener('click', () => this.createForm('Запись на индивидуальное занятие'))
         document.querySelector('.sign-up-close')?.addEventListener('click', () => this.closeSignUp())
