@@ -1,0 +1,121 @@
+.advantages {
+  min-height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 120px;
+  overflow: hidden;
+}
+
+.advantages__title {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-family: 'IBMPlexSerif', 'Roboto', sans-serif;
+  padding-bottom: 50px;
+  margin-bottom: 200px;
+  margin-top: 0;
+  position: relative;
+  z-index: 5;
+  background: white;
+}
+
+.advantages__section {
+  display: flex;
+  margin-bottom: 120px;
+  gap: 300px;
+  z-index: 5;
+  position: relative;
+  align-items: center;
+  padding-top: 50px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.advantages__section-reverse {
+  flex-direction: row-reverse;
+  padding-top: 120px;
+  padding-bottom: 40px;
+}
+
+.advantages__section__image {
+  width: 250px;
+  min-width: 250px;
+  height: 250px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  visibility: hidden;
+}
+
+.advantages__image-1 {
+  background-image: url("../assets/images/individual_approach.jpeg");
+}
+.advantages__image-2 {
+  background-image: url("../assets/images/funny.jpeg");
+}
+.advantages__image-3 {
+  background-image: url("../assets/images/remote.jpeg");
+}
+
+.advantages__section__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 24px;
+}
+
+.advantages__section__title {
+  font-family: IBMPlexSerif, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.advantages__section__decs {
+  margin-top: 12px;
+  font-family: IBMPlexMono, sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+svg.svg-line,
+svg.svg-line__cover,
+svg.svg-line__plane {
+  position:absolute;
+  overflow:hidden;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+svg.svg-line__plane {
+  z-index: 3;
+}
+
+svg.svg-line__cover {
+  top: 100px;
+}
+
+#plane-path {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.plane-icon {
+  height: 60px;
+  width: 60px;
+  min-width: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url("../assets/icons/plane.svg") center/cover;
+  z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+}

@@ -1,0 +1,122 @@
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 40px 0 60px;
+  justify-content: space-between;
+  z-index: 10;
+  //visibility: hidden;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+}
+
+.header__nav-link__container {
+  position: relative;
+  margin-right: 85px;
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.header__nav-link {
+  font-family: IBMPlexMono, sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  text-align: center;
+  color: white;
+}
+
+.link-1 {
+  position: absolute;
+  background: url("../assets/images/menu_4.png") center/contain no-repeat;
+  height: 135px;
+  width: 125px;
+  min-width: 125px;
+  top: -55px;
+  left: -26px;
+}
+
+.link-2 {
+  position: absolute;
+  background: url("../assets/images/menu_3.png") center/contain no-repeat;
+  height: 150px;
+  width: 175px;
+  min-width: 175px;
+  top: -40px;
+  left: -51px;
+}
+
+.link-3 {
+  position: absolute;
+  background: url("../assets/images/menu_2.png") center/contain no-repeat;
+  height: 130px;
+  width: 175px;
+  min-width: 175px;
+  top: -30px;
+  left: -30px;
+}
+
+.link-4 {
+  position: absolute;
+  background: url("../assets/images/menu_1.png") center/contain no-repeat;
+  height: 170px;
+  width: 180px;
+  min-width: 180px;
+  top: -65px;
+  left: -26px;
+}
+
+.header__label {
+  font-family: Amatic, sans-serif;
+  font-size: 60px;
+  margin: 0;
+  padding: 15px;
+  background-color: rgba(255,255,255,0.8);
+}
+
+// CONTACTS
+
+.contacts__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //visibility: hidden;
+}
+
+.contacts__item {
+  width: 25px;
+  height: 25px;
+  min-width: 25px;
+  display: block;
+  margin-right: 12px;
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.contacts__item-inst {
+  background: url('../assets/icons/instagram.png') center/cover;
+}
+
+.contacts__item-profi {
+  background: url('../assets/icons/profi.png') center/cover;
+}
+
+.contacts__wrap:hover {
+  .contacts-main {
+    width: 0;
+    transition: width 0.3s ease;
+  }
+  .contacts__items {
+    width: 100%;
+    transition: width 0.2s ease;
+  }
+}

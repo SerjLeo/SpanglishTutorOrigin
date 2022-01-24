@@ -36,13 +36,4 @@ export default class Validator implements ValidatorService {
         if (isEmpty) this.alert.validationAlert(`Заполните, пожалуйста, поля:${emptyFields.slice(0,-1)}`, errorTarget)
         return !isEmpty && !isLong
     }
-
-    validateTest() {
-        const inputs = document.querySelectorAll('input[type="radio"]')
-        inputs.forEach(input => input.addEventListener('change',() => {
-            const submitElement = document.querySelector<HTMLButtonElement>('.submit-test');
-            if (!submitElement) return;
-            submitElement.disabled = false;
-        }))
-    }
 }

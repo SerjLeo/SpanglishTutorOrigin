@@ -1,0 +1,142 @@
+.feedback {
+  background: linear-gradient(to right, rgba($blue2, 0.4) 75%, rgba($blue, 0.6) 75%);
+  //background: rgba($blue, 0.2);
+  padding-bottom: 200px;
+}
+
+.feedback__title {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-family: 'IBMPlexSerif', 'Roboto', sans-serif;
+  padding-top: 40px;
+}
+
+.feedback__container {
+  width: 100%;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback__slider {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.slide__wrap {
+  background-color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  min-height: 200px;
+  height: max-content;
+}
+
+.feedback__track.splide__track {
+  padding-bottom: 20px;
+}
+
+.slide__content-top {
+  padding: 30px;
+}
+
+.slide__content-quotes {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  background: url("../assets/images/quotes.png") center/cover;
+  margin-bottom: 20px;
+}
+
+.slide__content-text {
+  font-family: IBMPlexMono, sans-serif;
+  font-size: 14px;
+}
+
+.slide__content-bottom {
+  padding: 20px;
+  background: rgba($blue, 0.35);
+  display: flex;
+}
+
+.slide__content-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide__content-avatar {
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  background-position: center;
+  background-size: cover;
+  margin-right: 12px;
+}
+
+.slide__content-avatar.cat-1 {
+  background-image: url("../assets/images/kitty_2.png");
+}
+
+.slide__content-avatar.cat-2 {
+  background-image: url("../assets/images/kitty_3.png");
+}
+
+.slide__content-avatar.cat-3 {
+  background-image: url("../assets/images/kitty_4.png");
+}
+
+.slide__content-avatar.cat-4 {
+  background-image: url("../assets/images/kitty_5.png");
+}
+
+.slide__content-name {
+  font-family: IBMPlexSerif, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.slide__content-lang {
+  font-family: IBMPlexMono, sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 8px;
+}
+
+.splide__arrow {
+  height: 60px;
+  width: 60px;
+  min-width: 60px;
+  background: transparent;
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.splide__arrow svg {
+  height: 35px;
+  width: 35px;
+  min-width: 35px;
+}
+
+.splide__arrow--prev {
+  left: -100px;
+}
+
+.splide__arrow--next {
+  right: -100px;
+}
+
+.feedback__button {
+  margin: 20px auto 0;
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: 49px;
+  background: #acb2ef;
+  padding: 12px 20px;
+  border-radius: 4px
+}

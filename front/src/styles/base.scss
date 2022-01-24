@@ -1,7 +1,21 @@
 $white: rgb(245, 240, 240);
-
+$blue: #acb2ef;
+$blue2: #B6E0FF;
+$orange:#DD936C;
+$yellow:#FFCC8A;
+$green:#A2C6AC;
+$brown:#3E302F;
+$black: #323139;
+//#55607C
+//#F2A488;
+//#D96E48;
+//#E6E9EE;
 * {
   box-sizing: border-box;
+}
+
+html {
+  //overflow-y: hidden;
 }
 
 html, body {
@@ -12,7 +26,7 @@ html, body {
 }
 
 body {
-  font-family: 'Playfair', 'Roboto', sans-serif;
+  font-family: 'IBMPlexSerif', 'Roboto', sans-serif;
 }
 
 button {
@@ -39,13 +53,18 @@ button:focus {
 }
 
 *::-webkit-scrollbar-thumb {
-  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  background: linear-gradient(0deg, rgba($green,1) 0%, rgba($yellow, 1) 100%);
   border-radius: 10px;
   outline: none;
 }
 
 *::-webkit-scrollbar-button{
   display: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .img {

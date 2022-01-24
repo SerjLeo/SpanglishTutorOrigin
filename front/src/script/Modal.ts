@@ -36,47 +36,13 @@ export default class Modal {
         // })
     }
 
-    createTest(title: string) {
-        const answers = [0,0,0]
-        let step = 0
-        const render = () => {
-            if(!this.modal) return;
-            this.modal.innerHTML = ''
-            this.view.renderTest(this.modal, step, answers[step])
-            const testElement = document.querySelector('#test-form') as HTMLFormElement
-            const backBtn = document.querySelector('.back') as HTMLButtonElement
-            if(!testElement || !backBtn) return;
-            this.formControl.listenToTest(
-                testElement,
-                title,
-                nextStep,
-                backBtn,
-                prevStep,
-                step,
-                changeAnswer
-            )
-        }
-        const nextStep = () => {
-            if (step < 3) {
-                step += 1
-                render()
-                fillProgressBar()
-            }
-            if(step>3) step = 3
-        }
-        const prevStep = () => {
-            step -= 1
-            render()
-            fillProgressBar()
-        }
-        const fillProgressBar = () => {
-            let width = Math.floor(step*100/3)
-            document.querySelector('.progress-bar-fill')?.setAttribute('style',`width:${width}%`)
-        }
-        const changeAnswer = (answer: number, id: number) => {
-            answers[answer] = id
-        }
-        render()
+    createFeedbackForm() {
+        if(!this.modal) return
+        this.modal.innerHTML = ''
+        this.view.renderFeedbackForm(this.modal)
+        const formElement = document.querySelector('#feedback-form') as HTMLFormElement
+        if(!formElement) return;
+        this.formControl.listenToFeedbackForm(formElement)
         this.srcEl.classList.add('modal-active')
     }
 
@@ -94,8 +60,9 @@ export default class Modal {
 
     addListeners() {
         document.querySelector('.open-form-single')?.addEventListener('click', () => this.createForm('Запись на индивидуальное занятие'))
+        document.querySelector('.open-form-pair')?.addEventListener('click', () => this.createForm('Запись на парное занятие'))
         document.querySelector('.open-form-group')?.addEventListener('click', () => this.createForm('Запись на групповое занятие'))
-        document.querySelector('.open-form-free')?.addEventListener('click', () => this.createTest('Запись на бесплатное занятие'))
+        document.querySelector('.feedback__button')?.addEventListener('click', () => this.createFeedbackForm())
         document.querySelector('.close')?.addEventListener('click', () => this.closeModal())
         document.querySelector('.sign-up-btn')?.addEventListener('click', () => this.createForm('Запись на индивидуальное занятие'))
         document.querySelector('.sign-up-close')?.addEventListener('click', () => this.closeSignUp())

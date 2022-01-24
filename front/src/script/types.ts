@@ -28,7 +28,6 @@ export interface AlertService {
 
 export interface ValidatorService {
   validateForm(form: HTMLFormElement, errorTarget: string): boolean
-  validateTest(): void
 }
 
 export type AnswerHandler = {
@@ -47,10 +46,10 @@ export type QuestionVariant = {
 
 export interface FormControlService {
   listenToForm(form: HTMLFormElement, title: string): void
-  listenToTest(form: HTMLFormElement, title: string, submitHandler: EmptyHandler, backBtn: HTMLButtonElement, backHandler: EmptyHandler, step: number, answerHandler: AnswerHandler): void
+  listenToFeedbackForm(form: HTMLFormElement): void
 }
 
 export interface ViewService {
   renderForm(renderContainer: HTMLElement): void
-  renderTest(renderContainer: HTMLElement, step: number, checkedID: number): void
+  renderFeedbackForm(renderContainer: HTMLElement): void
 }

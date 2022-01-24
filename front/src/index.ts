@@ -9,9 +9,11 @@ import runSlider from "./script/Slider"
 import View from "./script/View";
 import Modal from "./script/Modal";
 import {Animations} from "./script/Animations";
+import {handleLinks} from "./script/Utils";
 
 function init() {
   lazyload();
+  handleLinks()
   new Animations();
   const api_url: string = "test_url";
   const AlertService = new Alert();
