@@ -1,5 +1,5 @@
 .feedback {
-  background: linear-gradient(to right, rgba($blue2, 0.4) 75%, rgba($blue, 0.6) 75%);
+  background: linear-gradient(to right, #00A2A5 75%, #79BC90 75%);
   //background: rgba($blue, 0.2);
   padding-bottom: 200px;
 }
@@ -22,6 +22,9 @@
 .feedback__slider {
   width: 1200px;
   margin: 0 auto;
+  @media screen and (min-width: 1024px) and (max-width: 1300px) {
+    width: 1000px;
+  }
 }
 
 .slide__wrap {
