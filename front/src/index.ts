@@ -12,6 +12,7 @@ import {Animations} from "./script/Animations";
 import {handleLinks} from "./script/Utils";
 
 function init() {
+  console.log('there')
   lazyload();
   handleLinks()
   new Animations();
@@ -26,7 +27,12 @@ function init() {
   const ViewService = new View(ValidationService)
   const modalEl = document.querySelector('.modal-root') as HTMLElement;
   if(modalEl) new Modal(modalEl, ViewService, FormControlService);
-
 }
 
-init();
+document.addEventListener('DOMContentLoaded', init)
+
+window.addEventListener('load', () => {
+  console.log('here')
+  document.querySelector('.preloader')?.setAttribute('style', "display: none")
+  document.querySelector('.content')?.setAttribute('style', "display: block")
+})

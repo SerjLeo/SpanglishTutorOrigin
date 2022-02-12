@@ -14,8 +14,13 @@ $black: #323139;
   box-sizing: border-box;
 }
 
+*:before, *:after {
+  box-sizing: inherit;
+}
+
 html {
   //overflow-y: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 html, body {
@@ -94,4 +99,8 @@ a {
   100% {
     transform:translateX(100em) skewX(-45deg);
   }
+}
+
+.content {
+    display: none;
 }
