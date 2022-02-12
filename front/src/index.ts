@@ -9,12 +9,11 @@ import runSlider from "./script/Slider"
 import View from "./script/View";
 import Modal from "./script/Modal";
 import {Animations} from "./script/Animations";
-import {handleLinks} from "./script/Utils";
+import initHandlers from "./script/Handlers";
 
 function init() {
-  console.log('there')
   lazyload();
-  handleLinks()
+  initHandlers()
   new Animations();
   const api_url: string = "test_url";
   const AlertService = new Alert();
@@ -32,7 +31,6 @@ function init() {
 document.addEventListener('DOMContentLoaded', init)
 
 window.addEventListener('load', () => {
-  console.log('here')
   document.querySelector('.preloader')?.setAttribute('style', "display: none")
   document.querySelector('.content')?.setAttribute('style', "display: block")
 })
