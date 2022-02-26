@@ -51,6 +51,9 @@ export default async function(api: ApiService) {
       900: {
         perPage: 1,
       },
+      768: {
+        arrows: false
+      },
       640: {
         perPage: 1,
       }

@@ -20,10 +20,11 @@
 }
 
 .feedback__slider {
-  width: 1200px;
+  width: calc(100% - 250px);
+  max-width: 1300px;
   margin: 0 auto;
-  @media screen and (min-width: 1024px) and (max-width: 1300px) {
-    width: 1000px;
+  @media screen and (max-width: 768px) {
+    width: calc(100% - 100px);
   }
 }
 
@@ -32,11 +33,18 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   min-height: 200px;
-  height: max-content;
+  height: 100%;
 }
 
 .feedback__track.splide__track {
   padding-bottom: 20px;
+}
+
+.slide__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .slide__content-top {

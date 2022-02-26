@@ -10,23 +10,28 @@
   background-color: rgba(255,255,255,0.8);
   transition: all 0.5s ease-out;
   //visibility: hidden;
+  @media screen and (max-width: 1024px) {
+    padding: 5px 15px;
+  }
 }
 
 .header.header__transparent {
-  background-color: transparent;
+  @media screen and (min-width: 1025px) {
+    background-color: transparent;
+  }
 }
 
 .header__nav {
   display: flex;
   align-items: center;
+  gap: 85px;
+  @media screen and (max-width: 1024px) {
+    gap: 25px;
+  }
 }
 
 .header__nav-link__container {
   position: relative;
-  margin-right: 85px;
-  &:last-of-type {
-    margin-right: 0;
-  }
 }
 
 .header__nav-link {
@@ -140,4 +145,28 @@
     width: 100%;
     transition: width 0.2s ease;
   }
+}
+
+.menu-desktop {
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.menu-mobile {
+  display: none;
+  position: relative;
+  @media screen and (max-width: 1024px) {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.nav-mobile {
+  width: 0%;
+  overflow: hidden;
+}
+
+.nav-mobile.active {
+  width: 100%;
 }

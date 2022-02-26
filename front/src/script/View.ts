@@ -42,7 +42,7 @@ export default class View implements ViewService {
     renderFeedbackForm(renderContainer: HTMLElement) {
         renderContainer.innerHTML = `
         <div class="feedback-form__wrap">
-            <h3 class="feedback-form__title">Оставьте отзыв</h3>
+            <h2 class="feedback-form__title">Оставьте отзыв</h2>
             <div class="feedback-validation-error"></div>
             <form action="" id="feedback-form" class="feedback-form common-form">
                 <input type="text" name="name" placeholder="Имя" maxlength="60">

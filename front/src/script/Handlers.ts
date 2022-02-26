@@ -27,7 +27,14 @@ const handleLinks = () => {
     })
 }
 
+const handleMobileMenuBtn = () => {
+    document.querySelector('.menu-mobile__btn')?.addEventListener('click', () => {
+        document.querySelector('.nav-mobile')?.classList.toggle('active')
+    })
+}
+
 export default function initHandlers() {
     onHeaderHover()
     handleLinks()
+    handleMobileMenuBtn()
 }
